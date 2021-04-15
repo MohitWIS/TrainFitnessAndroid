@@ -1,0 +1,185 @@
+<div data-role="page" id="helpdeskpage" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+    <div data-role="header" id="helppageheader" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
+        <div id="helpdeskpageheader">
+            <div id="helpdeskheader"></div>
+        </div>
+        <div class="pageheadclosebtndiv"><div id="helpclosebtn" class="pageheadclosebtn"></div></div>
+    </div>
+    <div id="helpdeskmaincontent" class="ui-content wrapper" role="main">
+        <div id="supportmessagediv" class="scrollable">
+
+            <div data-role="collapsible" id="helpdeskmainadd" class="helpdeskmain " data-theme="h" data-collapsed="false" data-iconpos="right">
+                <h3 id="helpdeskitemtitleadd" class="helpdeskitemtitle helpdeskcollapsible">Add Issues</h3>
+
+                <!--<div id="supportfieldsadd" class="supportfields">-->
+                <div id="supportfieldsadd" >
+                    <div id="addissuetitlediv" class="issuebodyrow">
+                        <div class="issuetitletxt issuelabel"></div>
+                        <div class="issueitem">
+                            <input type="text" name="support-subject" id="support-subject" value="" placeholder="" data-theme="h"/>
+                        </div>
+                    </div>
+                    <div class="issuebodyrow">
+                        <div class="issuecategorytxt issuelabel"></div>
+                        <div class="issueitem selectissue">
+                            <select name="select-issue" id="select-issue" data-theme="h" data-shadow="false" data-iconshadow="false">
+                                <option value="category-0">00 - To Be Assigned</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="issuefields issuebodyrow ui-fieldcontain">
+                        <div class="issuecommentaddtxt issuelabel"></div>
+                        <div class="issueitem">
+                            <textarea id="issueitemtextarea" placeholder=""></textarea>
+                        </div>
+                    </div>
+
+                    <div class="dx-viewport" data-theme="h" data-shadow="false" data-iconshadow="false" style="width: 75%;margin-left: 23%;">
+                        <div class="demo-container" data-theme="h" data-shadow="false" data-iconshadow="false">
+                            <div id="file-uploader" data-theme="h" data-shadow="false" data-iconshadow="false"></div>
+
+                            <div  class="chunk-panel">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="issuefields-files" class="issuefields">
+                        <div class="issuebodyfilerow">
+                            <div class="filestxt issuelabel"></div>
+                            <div class="issueitem">
+                                <!--<div id="addnewfilesitemdiv" class="addfilesitemdiv">
+                                    <a id="addnewfilebtn" class="addfiletxt ui-btn">
+                                        <img id="addissueimg" class="addissueimg" style="border:none" src="css/base/images/icons-png/plus-white.png" alt="Add File"/>
+                                        <div class="addissuefilebtntxt"></div>
+                                    </a>
+                                </div>-->
+                                <div id="removenewfilesitemdiv" class="removefilesitemdiv">
+                                    <a id="removenewfilebtn" class="removefiletxt ui-btn">
+                                        <img id="deleteissueimg" class="deleteissueimg" style="border:none" src="css/base/images/delete_white.png" alt="Remove File"/>
+                                        <div class="removeissuefilebtntxt"></div>
+                                    </a>
+                                </div>
+                                <div class="progress">
+                                    <div class="bar" style="background-color: #079469;color:white;"></div >
+
+                                </div>
+                                <p id="filename"></p>
+                                <p id="fileNoSupportError"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="supportbuttongriddiv">
+                        <div id="messagebuttongrid" class="messagebuttongrid">
+                            <div class="supportbtndiv"><a  id="sendsupportbtn" class="ui-btn sendbtntxt sendsupportbtn"></a></div>
+                            <div class="supportbtndivright"><a  id="cancelsupportbtn" class="ui-btn cancelbtntxt cancelsupportbtn"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="collapsible" id="helpdeskmaincurrent" class="helpdeskmain " data-theme="h" data-collapsed="true" data-iconpos="right">
+                <h3  id="helpdeskitemtitlecurrent" class="helpdeskitemtitle helpdeskitemtitlecurrent helpdeskcollapsible">Current Issues</h3>
+                <div id="issuesupportfields" class="">
+                    <div class="searchissuefields">
+                        <div id="searchmessagedivlabel" class="searchdiv">
+                            <label id="searchissuelabel" for="messagesearch"></label>
+                        </div>
+                        <div id="searchmessagediv" class="searchdiv">
+                            <input type="search" name="messagesearch" id="messagesearch" value="" placeholder="" /> </div>
+                    </div>
+                    <div id="supportmessagesdiv">
+                        <div id="issueslistdiv">
+                            <div data-role="collapsible-set" data-theme="h" data-content-theme="h" style="margin:0" id="issuescollapsibleset" class="issuescollapsibleset">
+                            </div>
+                        </div>
+                        <div id="messagenavdiv" data-role="controlgroup" data-type="horizontal"
+                            class="messagenavdiv" data-theme="h">
+                            <a id="messageprevlink" class="ui-btn messageprevlink" data-iconpos="notext" data-icon="custom"> Prev</a>
+                            <a id="messagenextlink" class="ui-btn messagenextlink" data-iconpos="notext" data-icon="custom"> Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="helpdeskpadderdiv"></div>
+    </div>
+
+    <div data-role="panel" id="helpextramenupanel" data-theme="h" data-position="right" data-display="overlay" data-swipe-close="true" data-dismissible="false" class="rhsmenupanel extramenupanel">
+        <div class="pageheaderpanelrhs headbck ui-bar-h" data-role="header" data-role="header" data-hide-during-focus="" data-position="fixed" data-tap-toggle="false">
+            <div id="settingspodmenuheader"></div>
+        </div>
+        <div id="podrhsmenuiconsdivcontent"  class="ui-content" role="main">
+            <div id="podrhsmenuiconsdiv" class="wrapper">
+                <ul id="podulrhsmenu" data-role="listview">
+                    <li id="podcoursebtnli" class="libutton">
+                        <a id="helpcoursemenubtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="podcourseimg" class="supportimgdiv"></div>
+                            </div><div class="rhsmenuitem coursesimgtxt"></div></a>
+                    </li>
+                    <li class="libutton" id="helpvideomenubtnli">
+                        <a href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="helpvideomenubtn" data-iconpos="notext">
+                            <div id="videobtndiv" class="rhsmenuicon">
+                                <div id="videobtnimg" class="supportimgdiv"></div>
+                            </div><div id="videobtnimgtxt" class="videobtnimgtxt rhsmenuitem"></div></a>
+                    </li>
+                    <li class="libutton" id="helpaudiomenubtnli">
+                        <a href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="helpaudiomenubtn" data-iconpos="notext">
+                            <div id="audiobtndiv" class="rhsmenuicon">
+                                <div id="audiobtnimg" class="supportimgdiv"></div>
+                            </div><div id="audiobtnimgtxt" class="audiobtnimgtxt rhsmenuitem"></div></a>
+                    </li>
+                    <li class="libutton" id="helpplistmenubtnli">
+                        <a href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="helpplistmenubtn" data-iconpos="notext">
+                            <div id="plbtndiv" class="rhsmenuicon">
+                                <div id="plbtnimg" class="supportimgdiv"></div>
+                            </div><div id="plbtnimgtxt" class="plbtnimgtxt rhsmenuitem"></div></a>
+                    </li>
+                    <li data-role="list-divider" class="menudivider" data-theme="h"></li>
+                    <li class="libutton">
+                        <a href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="helphelpdeskimg" class="supportimgdiv"></div>
+                            </div><div id="helphelpdeskimgtxt" class="rhsmenuitem"></div></a>
+                    </li>
+                    <li class="libutton">
+                        <a id="podsupportmenubtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="podsupportimg" class="supportimgdiv"></div>
+                            </div><div class="rhsmenuitem supportimgtxt"></div></a>
+                    </li>
+                    <li class="libutton">
+                        <a id="helprefreshbtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="podrefreshimg" class="supportimgdiv"></div>
+                            </div><div class="rhsmenuitem refreshimgtxt"></div></a>
+                    </li>
+                    <li class="libutton">
+                        <a id="helpmainlogoutbtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="podlogoutimg" class="supportimgdiv"></div>
+                            </div><div class="rhsmenuitem logoutimgtxt"></div></a>
+                    </li>
+                    <li data-role="list-divider" class="menudivider" data-theme="h"></li>
+                    <li class="libutton">
+                        <a id="helpclosemenubtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="podcloseimg" class="supportimgdiv"></div>
+                            </div><div class="rhsmenuitem closehelpimgtxt"></div></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" class="footerbar">
+            <div class="rhsmenuicondiv">
+                <div id="helpsettingspanelrhs" class="rhsfooterion settingsicon"></div>
+            </div>
+        </div>
+    </div>
+    <div id="helpdeskfooter" data-role="footer" data-position="fixed" class="footerbar">
+        <div id="helpfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft">
+            <div class="footernavbarleft">
+                <div class="lhsmenuiconfooter"><div id="helpfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon"></div></div>
+            </div>
+        </div>
+    </div>
+</div>
