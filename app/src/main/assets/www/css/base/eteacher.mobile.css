@@ -180,12 +180,12 @@ input, textarea {
     height: 35px;
     margin-top: 2%;margin-right: 2%;}
 .sections .statuslock{width:12%;}
-#menucontentsection .scosingleline{padding-top:3.5% !important;}
-#menucontentsection .scosinglelineNew{padding-top:1.5% !important;}
+#menucontentsection .scosingleline{padding-top:14px !important;}
+#menucontentsection .scosinglelineNew{padding-top:14px !important;}
 .sectiontitlediv{padding-top: 3%;}
 .sectiontitle{width: 100%;
 font-weight:bold;
-    padding-top: 2%;
+    padding-top: 8px;
     padding-bottom: 0;min-height: 2em !important;font-size:0.9em;}
 .scolidiv{overflow:auto;}
 .scoli{min-height: 4em;}
@@ -211,7 +211,7 @@ font-weight:bold;
 #menucontentgroup .groupmoduletitle{font-weight:bold;padding-bottom: 1%;}
 #menucontentgroup .limodtitlediv{padding-top: 3%;}
 #menucontentgroup .limodtitlediv.groupsinglelineNew{padding-top: 4% !important;}
-#menucontentgroup .limodtitlediv.groupsingleline{padding-top: 7% !important;}
+#menucontentgroup .limodtitlediv.groupsingleline{padding-top: 21px !important;}
 #ulcourses div.limodtitlediv.groupsingleline{width: 22em !important;}
 
 #scosset.iphone5 .statuslock{width: 14%;}
@@ -232,7 +232,7 @@ font-weight:bold;
     padding-left: 0 !important;}
 .theoryviewhead{width: 40%; margin-right:-20%!important;}
 
-#coursepagecontent #lessonhead{padding-top: 4%;}
+#coursepagecontent #lessonhead{padding-top: 16px;}
 #coursepagecontent #lessonheadclosediv{margin-right: 5%;}
 #contentprimary.iphone5 #coursepagecontent #lessonheadclosediv{margin-right: 6%;}
 #coursepagecontent #lessonheadclosebtn{width: 40px;
