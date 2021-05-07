@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.eteacherpro.trainfitness",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "properties": [],
+      "versionCode": 800300012,
+      "versionName": "800300012",
+      "enabled": true,
+      "outputFile": "app-debug.apk"
+    }
+  ]
+}

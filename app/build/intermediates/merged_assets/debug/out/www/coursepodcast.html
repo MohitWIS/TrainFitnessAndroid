@@ -1,0 +1,60 @@
+<div data-role="page" id="coursepodcastpage" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+    <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+        <div id="coursepodcastpageheader">
+            <div id="coursepodcastviewheader"></div>
+        </div>
+        <div class="pageheadclosebtndiv"><div id="cpodclosebtn" class="pageheadclosebtn"></div></div>
+    </div>
+    <div id="coursepodcastcontent" class="ui-content" role="main">
+        <div id="coursetabcontainer" class="flip-container">
+            <div class="tabs-content flipper" id="tabflipper">
+                <div id="podcasttab" class="tabscontentitem fronttab">
+                    <div id="nopodpodcastdiv" class="nopodcastdiv nopodcastsdiv"></div>
+                    <div id="coursetheorypodcastdiv" class="wrapper">
+                        <div id="theorypodcastcontentprimary" class="scrollable mediacontentmain">
+                            <div data-theme="h" data-content-theme="h" id="podcastcategories" style="margin-top:0px !important;"></div>
+                            <div id="vidmediapadderdiv" class="mediapadderdiv"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="courseplaylisttab" class="catlistpopup backtab">
+                    <div data-theme="h" id="courseplaylistheaderbar" class="headbck ui-bar-h" style="position: fixed;width: 98%;">
+                        <div id="courseplaylistheader"></div>
+                        <div class="headernavbarright">
+                            <div class="rhsheadmenuicon"><div id="courseplaylistclosebtn" class="rhsheadmenuicon"></div></div>
+                        </div>
+                    </div>
+                    <div id="mediaplaycontainerdiv" class="mediaplaycontainerdiv" style="margin-top: 11%;">
+                        <div id="audiopodplayerdiv">
+                            <audio id="audiopodplayer" src="resources/default.mp3" class="audiopodplayer" controls="controls" preload="auto"></audio>
+                        </div>
+                        <div id="videopodplayerdiv">
+                            <div id="videopodplayerhide"><a id="btnpodvidplayerhide" class="hidebtntxt ui-btn ui-btn-h"></a></div>
+                            <div id="videopoddiv"><video id="videopodplayer" class="videoplayer" poster="css/client/images/videoposter1.png" preload="auto" src="resources/default.mp4"></video></div>
+                        </div>
+                    </div>
+                    <div id="podplaylistdiv" class="wrapper" style=" margin-top: 11%;">
+                        <div id="courseplaylistcontentprimary" class="scrollable mediacontentmain">
+                            <div class='playlistuldiv'>
+                                <ul id='coursepodcategoryul' data-role='listview' class='podcategoryul' data-theme='h' data-inset="false" data-icon="false">
+                                </ul>
+                                <div class="mediapadderdiv"></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div id="podcastfooter" data-role="footer" data-position="fixed" class="footerbar">
+        <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft">
+            <div class="footernavbarleft">
+                <div class="lhsmenuiconfooter">
+                    <div id="podfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

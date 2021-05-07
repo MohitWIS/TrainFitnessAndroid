@@ -1,0 +1,231 @@
+<div data-role="page" id="podcastpage" data-theme="h" class="ui-responsive-panel ui-page-theme-h" style="padding-bottom: 0px !important;">
+    <div data-role="header" id="podcastpagehead" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
+        <div data-role="navbar" class="medianavbar" data-theme="h">
+            <ul data-theme="h" class="medianavbarul">
+                <li data-theme="h"><a href="#" data-tab="videostab" id="podmediavideomenubtn" data-theme="h" class="ui-btn-active mediatabbtn" data-iconpos="top" data-icon="custom"></a></li>
+                <li data-theme="h"><a href="#" data-tab="audiotab" id="podmediaaudiomenubtn" data-theme="h" class="mediatabbtn" data-iconpos="top" data-icon="custom"></a></li>
+                <li data-theme="h"><a href="#" data-tab="userplaylisttab" id="userplaylistmenubtn" data-theme="h" class="mediatabbtn" data-iconpos="top" data-icon="custom"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="ui-content" role="main" id="mediamaincontent">
+        <div id="tabcontainer" class="flip-container">
+            <div class="tabs-content flipper" id="tabflipper">
+                <div id="videostab" class="tabscontentitem" style="height:auto!important;">
+                    <div id="novideopodcastdiv" class="nopodcastdiv novideosdiv"></div>
+                    <div id="videopodcastdiv" class="wrapper">
+                        <div id="podcastcontentprimary" class="scrollable mediacontentmain">
+                            <div data-theme="h" data-content-theme="h" id="videocategories"></div>
+                            <div id="vidmediapadderdiv" class="mediapadderdiv"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="audiotab" class="tabscontentitem fronttab">
+                    <div id="noaudiopodcastdiv" class="nopodcastdiv noaudiosdiv"></div>
+                    <div id="audiopodcastdiv" class="wrapper">
+                        <div id="audiopodcastcontentprimary" class="scrollable mediacontentmain">
+                            <div data-theme="h" data-content-theme="h" id="audiocategories"></div>
+                            <div id="audmediapadderdiv" class="mediapadderdiv"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="userplaylisttab" class="tabscontentitem">
+                    <div id="nouserplaylistdiv" class="nouserplaylistdiv nopodcastdiv"></div>
+                    <div id="playlisttitlepopup" data-theme="h">
+                        <div  data-theme="h" id="playlisttitleheader" class="headbck podheadbck ui-bar-h">
+                            <h3 id="playlistpopuphead">Playlist Title</h3>
+                        </div>
+                        <div data-theme="h" class="ui-content logincontentdiv">
+                            <div  class="playlistfielddiv">
+                                <div id="playlisttitlelabel" class="playlistslabeldiv loginfieldsusername"></div>
+                                <div class="loginfieldinput loginfieldsusername playlisttitleinputdiv">
+                                    <input type="text" name="playlist-title" id="playlisttitleinput" value="" data-theme="h"/>
+                                </div>
+                            </div>
+                            <div class="addplaylistbtndiv">
+                                <div class="playlistbuttongrid plsave">
+                                    <a class="ui-btn-h" id="playilsttitleaddbtn"></a>
+                                </div>
+                                <div class="playlistbuttongrid plcancel">
+                                    <a class="ui-btn-h" id="playilsttitlecancelbtn"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="userplaylistdiv" class="wrapper" style="position: unset !important;">
+                        <div id="userplaylistcontentprimary" class="scrollable mediacontentmain">
+                            <div data-theme="h" data-content-theme="h" id="userplaylistcategories"></div>
+                            <div id="usermediapadderdiv" class="mediapadderdiv"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="playlisttab" class="catlistpopup backtab">
+                    <div data-theme="h" id="playlistheaderbar" class="headbck ui-bar-h ui-header" style="position: fixed;width: 98%;">
+                        <div id="playlistheader"></div>
+                        <div class="headernavbarright">
+                            <div class="rhsheadmenuicon">
+                                <div id="playlistclosebtn" class="rhsheadmenuicon"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="videoplaycontainerdiv" class="mediaplaycontainerdiv">
+                        <div id="videoplayerhide"><a id="btnvidplayerhide" class="hidebtntxt ui-btn ui-btn-h"></a></div>
+                        <div id="videoplayerdiv">
+                            <video id="videoplayer" class="videoplayer" poster="css/client/images/videoposter1.png" preload="auto" src="resources/default.mp4"></video>
+                        </div>
+                    </div>
+                    <div id="audioplaycontainerdiv" style="    margin-top: 11%;">
+                        <div id="audioplayerdiv1" class='audioplayerdiv'>
+                            <audio id="audioplayer1" class="audioplayer" src="resources/default.mp3" controls="controls" preload="auto">
+                            </audio>
+                        </div>
+                        <div id="audioplayerdiv3" class='audioplayerdiv'>
+                            <audio id="audioplayer3" src="resources/default.mp3" class="audioplayer" controls="controls" preload="auto">
+                            </audio>
+                        </div>
+                    </div>
+                    <div id="playlistdiv" class="wrapper" >
+                        <div id="playlistcontentprimary" class="scrollable mediacontentmain" >
+                            <div id="playlistitemtitlepopup" data-theme="h">
+                                <div  class="playlistfielddiv">
+                                    <div id="playlistitemtitlelabel" class="playlistslabeldiv loginfieldsusername"></div>
+                                    <div class="loginfieldinput loginfieldsusername playlisttitleinputdiv">
+                                        <input type="text" name="playlistitem-title" id="playlistitemtitleinput" value="" data-theme="h" onkeyup="getInput();"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='playlistuldiv'>
+                                <ul id='podcategoryul'  data-role='listview' class='podcategoryul' data-theme='h' data-inset="false" data-icon="false">
+                                </ul>
+                                <div id="playlistpadderdiv" class="mediapadderdiv"></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div data-role="popup" id="userplaylistpage" data-theme="h" class="ui-responsive-panel ui-page-theme-h" data-position-to="window">
+                <div class="ui-content" role="main" id="userplaylistcontent" style="overflow: scroll; height: 100%;">
+                    <div id="playlisttrackdiv" class="wrapper">
+                        <div id="playlisttrackprimary" class="scrollable mediacontentmain">
+                            <div data-theme="h" data-content-theme="h" id="playlisttracksmedia">
+                                <ul id='playlistcategoryul' data-role='listview' class='playlistcategoryul' data-theme='h' data-inset="false" data-icon="false">
+                                </ul>
+                                <div class="mediapadderdiv"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="playlisttracksfooter" data-role="footer" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="" class="ui-bar-h footerbar" style="position: fixed;">
+                    <div id="footerbarplleft" data-role="navbar" class="nav-menu-bar footericonsleft">
+                        <div class="footernavbarleft">
+                            <div class="lhsmenuicon"><div id="footerbarleftplbckbtn" class="lhsmenuicon"></div></div>
+                        </div>
+                    </div>
+                    <div id="footerbarplright" data-role="navbar" class="nav-menu-bar footericonsright">
+                        <div class="footerbarright">
+                            <div class="rhsfootmenuicon footerbarsettingsli"><div id="footertracksmenubtn" class="rhsfootmenuicon settingsicon"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-role="panel" id="podextramenupanel" data-theme="h" data-position="right" data-display="overlay" data-swipe-close="true" data-dismissible="false" class="rhsmenupanel extramenupanel">
+        <div class="pageheaderpanelrhs headbck ui-bar-h" data-role="header" data-hide-during-focus="" data-position="fixed" data-tap-toggle="false">
+            <div id="settingspodmenuheader"></div>
+        </div>
+        <div id="podrhsmenuiconsdivcontent" class="wrapper ui-content" role="main">
+            <div id="podrhsmenuiconsdiv" class="wrapper">
+                <ul id="podulrhsmenu" data-role="listview">
+                    <li id="podcoursebtnli" class="libutton">
+                        <a id="podcoursemenubtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="podcourseimg" class="supportimgdiv"></div>
+                            </div><div class="rhsmenuitem coursesimgtxt"></div></a>
+                    </li>
+                    <li class="menudivider"></li>
+                    <li class="libutton" id="mediavideomenubtnli">
+                        <a href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="mediavideomenubtn" data-iconpos="notext">
+                            <div id="mediavideobtndiv" class="rhsmenuicon">
+                                <div id="mediavideobtnimg" class="supportimgdiv"></div>
+                            </div><div id="mediavideobtnimgtxt" class="rhsmenuitem"></div></a>
+                    </li>
+                    <li class="libutton" id="mediaaudiomenubtnli">
+                        <a href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="mediaaudiomenubtn" data-iconpos="notext">
+                            <div id="mediaaudiobtndiv" class="rhsmenuicon">
+                                <div id="mediaaudiobtnimg" class="supportimgdiv"></div>
+                            </div><div id="mediaaudiobtnimgtxt" class="rhsmenuitem"></div></a>
+                    </li>
+                    <li class="libutton" id="mediaplistmenubtnli">
+                        <a href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="mediaplistmenubtn" data-iconpos="notext">
+                            <div id="mediaplbtndiv" class="rhsmenuicon">
+                                <div id="mediaplbtnimg" class="supportimgdiv"></div>
+                            </div><div id="mediaplbtnimgtxt" class="rhsmenuitem"></div></a>
+                    </li>
+                    <li class="menudivider" data-theme="h"></li>
+                    <li class="libutton">
+                        <a class="menuButtons rhsmenubtn ui-alt-icon" id="podhelpdeskmenubtn" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="podhelpdeskimg" class="supportimgdiv"></div>
+                            </div><div class="rhsmenuitem helpdeskimgtxt"></div></a>
+                    </li>
+                    <li class="libutton">
+                        <a id="podsupportmenubtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="podsupportimg" class="supportimgdiv"></div>
+                            </div><div class="rhsmenuitem supportimgtxt"></div></a>
+                    </li>
+                    <li class="libutton">
+                        <a id="podrefreshbtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="podrefreshimg" class="supportimgdiv"></div>
+                            </div><div class="rhsmenuitem refreshimgtxt"></div></a>
+                    </li>
+                    <li class="libutton">
+                        <a id="podmainlogoutbtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="podlogoutimg" class="supportimgdiv"></div>
+                            </div><div class="rhsmenuitem logoutimgtxt"></div></a>
+                    </li>
+                    <li class="menudivider" data-theme="h"></li>
+                    <li class="libutton">
+                        <a id="podclosemenubtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                            <div class="rhsmenuicon">
+                                <div id="podcloseimg" class="supportimgdiv"></div>
+                            </div><div class="rhsmenuitem closehelpimgtxt"></div></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div  data-role="footer" data-position="fixed" class="footerbar">
+            <div class="rhsmenuicondiv">
+                <div id="podsettingspanelrhs" class="rhsfooterion settingsicon"></div>
+            </div>
+        </div>
+    </div>
+    <div id= "mediafooter" data-role="footer" data-position="fixed" class="footerbar">
+        <div id="footerbarleft" data-role="navbar" class="nav-menu-bar footericonsleft">
+            <div class="footernavbarleft">
+                <div class="podlhsmenuicon">
+                    <div id="footerbarleftbckbtn" class="lhsmenuicon lhsmenupodicon"></div>
+                </div>
+            </div>
+        </div>
+        <div id="footerbarright" data-role="navbar" class="nav-menu-bar footericonsright">
+            <div class="footerbarright">
+                <div class="rhsfootmenuicon footerbarsettingsli"><div id="footersettingsmenubtn" class="rhsfootmenuicon settingsicon"></div>
+                </div>
+                <div class="rhsfootmenuicon footerbarplaylistli"><div id="footerplaylistbtn" class="rhsfootmenuicon addplaylist"></div>
+                </div>
+                <div class="rhsfootmenuicon footerbarplaylistselli"><div id="footerplaylistselbtn" class="rhsfootmenuicon selplaylist"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

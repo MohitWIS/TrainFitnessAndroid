@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mobile Student Desktop</title>
+        <meta charset="utf-8" />
+        <meta name=viewport content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 " />
+        <meta name="format-detection" content="telephone=no">
+            <meta http-equiv="Content-Security-Policy" content="style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval' 'unsafe-inline'  https://*.googleapis.com https://maps.googleapis.com https://maps.gstatic.com www.google-analytics.com ajax.googleapis.com;">
+                <link rel="stylesheet" type="text/css" href="css/base/jquery.mobile.css" />
+                <link rel="stylesheet" type="text/css" href="css/base/jquery.mobile.icons.min.css" />
+                <link rel="stylesheet" type="text/css" href="css/base/jquery.mobile.theme.css" />
+                <link rel="stylesheet" type="text/css" href="css/base/mediaelementplayer.min.css" />
+                <link rel="stylesheet" type="text/css" href="css/base/datebox.css" />
+                <link rel="stylesheet" type="text/css" href="css/base/eteacher.css"/>
+                <link rel="stylesheet" type="text/css" href="css/base/eteacher.mobile.css"/>
+                <link rel="stylesheet" type="text/css" href="css/client/client.css"/>
+                <link rel="stylesheet" type="text/css" href="css/base/jquery-ui.min.css"/>
+                </head>
+    <body class="ui-body-h">
+        <script type="text/javascript" src="scripts/base/jquery.js"></script>
+        <script type="text/javascript" src="scripts/base/jquery-migrate.js"></script>
+        <script type="text/javascript">
+            var dd = $.Deferred();
+            var jqd = $.Deferred();
+            $.when(dd, jqd).done(doInit);
+            $(document).bind('mobileinit', function () {
+                             $.support.cors = true;
+                             $.mobile.allowCrossDomainPages = true;
+                             $.mobile.pushStateEnabled = false;
+                             $.mobile.defaultPageTransition = 'none';
+                             jqd.resolve();
+                             
+                             });
+                             function doInit(){
+                                 initStart();
+                             }
+        </script>
+        <div id="mainhomepage" data-role="page" data-theme="h" data-title="Home Page" class="retinamain ui-page-theme-h">
+            <div class="ui-content" role="main">
+                <div id="maincontentimgdiv"></div>
+                <div id="popupcontainer">
+                    <div id="popupcontainerinner">
+                        <div id="popupitemlogin" class="popupitem">
+                            <div class="popupborder">
+                                <div id="loginpopup" data-theme="h">
+                                    <div  data-theme="h" id="loginheader" class="ui-bar-h">
+                                        <h3 id="loginpopuphead">Login</h3>
+                                    </div>
+                                    <div data-theme="h" class="ui-content logincontentdiv">
+                                        <div class="logintable">
+                                            <div  class="loginfielddiv">
+                                                <div id="loginfieldsusername" class="loginfields loginfieldsusername"></div>
+                                                <div class="loginfieldinput loginfieldsusername">
+                                                    <input type="text" name="login-username" id="login-username" value="" data-theme="h"/>
+                                                </div>
+                                            </div>
+                                            <div  class="loginfielddiv">
+                                                <div id="loginfieldspassword" class="loginfields loginfieldspassword"></div>
+                                                <div class="loginfieldinput loginfieldspassword">
+                                                    <input type="password" data-theme="h" name="login-password" id="login-password" value="" />
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="cleardiv"></div>
+                                            <div class="loginfielddiv loginbuttongrid">
+                                                <div id="loginuserbtndiv" onclick="hideKeyboard(event, false); loginUser();">
+                                                    <a class="ui-btn-h" id="loginuserbtn" ></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="popupitemportal" class="popupitem popupitemhide">
+                            <div class="popupborder">
+                                <div id="portalselectpopup" data-theme="h">
+                                    <div  data-theme="h" id="portalselectheader" class="ui-bar-h">
+                                        <h3 id="portalselecthead">Portal</h3>
+                                    </div>
+                                    <div data-theme="h" class="ui-content preferencecontentdiv">
+                                        <div class="prefrencesdiv">
+                                            <fieldset data-role="controlgroup" data-iconpos="left" data-theme="h" id="fieldsetportals" class="preferencesfieldset ui-btn-icon-left">
+                                                <legend id="portallegend"></legend>
+                                                <label id='portal0label' class='understandlabel'>
+                                                    <input type='checkbox' name='radio-choice-portal' id='portalpref0' class='preferenceinitial' value='' data-theme='h'/>
+                                                    <span id="portal0labeltxt">
+                                                    </span>
+                                                </label>
+                                            </fieldset>
+                                            <div class="selectportalbtn">
+                                                <a class="preferencebtn ui-btn-h ui-shadow ui-btn-corner-all ui-shadow-icon" id="portalselectbtn"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end content -->
+        </div><!-- end page  -->
+		
+		<div data-role="page" id="termsconditionpage" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+    <div data-role="header" id="termsheader" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+        <div id="supportpageheader">
+            <div id="supportviewheader" class="supportviewheader1"></div>
+        </div>
+    </div>
+    <div class="ui-content" role="main" id="supportmaincontent" style="border: 2px solid black !important;background-color: white !important;">
+        <div id="supportmaincontentwrapper" data-theme="h" class="wrapper">
+            <div id="supportdivscroller" class="scrollable" style="margin-bottom: 20%;">
+			<div id="novideopodcastdiv" class="nopodcastdiv novideosdiv"></div>
+			 <div id="termsdiv" class="termsdiv1 datacontent"></div>
+			
+			</div>
+		
+		<div class="theorypadderdiv"></div>
+		</div>
+	</div>	
+	
+	<div class="Termspart" style="overflow-y: scroll;">
+	
+	</div>
+	
+		<div id="supportfooter" style="display: none;" data-role="footer" data-position="fixed" class="footerbar class1">
+		<div class="amnavfieldsetdiv">
+                                <div id="prevbtndiv" class="nextprevbtndiv" data-theme="h">
+                                    <div class="navlinkdiv"><a id="disagreelink" class="prevbutton"></a></div>
+                                </div>
+                                <div id="nextbtndiv" class="nextprevbtndiv" data-theme="h">
+                                    <div class="navlinkdiv"><a id="agreelink" class="nextbutton"></a></div>
+                                </div>
+                            </div>
+        <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft">
+            <div class="footernavbarleft">
+                
+            </div>
+        </div>
+    </div>
+	</div>
+
+
+
+
+
+
+<div data-role="page" id="termsconditionpage2" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+    <div data-role="header" id="termsheader" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+        <div id="supportpageheader">
+            <div id="supportviewheader" class="supportviewheader2"></div>
+        </div>
+        
+    </div>
+    <div class="ui-content" role="main" id="supportmaincontent2" style="border: 2px solid black !important;background-color: white !important;">
+        <div id="supportmaincontentwrapper" data-theme="h" class="wrapper">
+            <div id="supportdivscroller" class="scrollable" style="margin-bottom: 20%;">
+			    <div id="novideopodcastdiv" class="nopodcastdiv novideosdiv"></div>
+			    <div id="termsdiv" class="termsdiv2 datacontent"></div>
+			</div>
+		    <div class="theorypadderdiv"></div>
+		</div>
+	</div>	
+	
+	<div class="Termspart" style="overflow-y: scroll;">
+	
+	</div>
+	
+	<div id="supportfooter" style="display: none;" data-role="footer" data-position="fixed" class="footerbar class2">
+		<div class="amnavfieldsetdiv">
+            <div id="prevbtndiv" class="nextprevbtndiv" data-theme="h">
+                <div class="navlinkdiv"><a id="disagreelink" class="prevbutton disagreeterm2"></a></div>
+            </div>
+            <div id="nextbtndiv" class="nextprevbtndiv" data-theme="h">
+                <div class="navlinkdiv"><a id="agreelink" class="nextbutton agreeterm2"></a></div>
+            </div>
+        </div>
+        <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft">
+            <div class="footernavbarleft">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="bookingPage" style="background-color: #eaeaea" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+
+    <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+
+        <div id="supportpageheader">
+            <div class="bookingIcon"></div>
+            <div id="supportviewheader" style="width: 33% !important;margin-left: 0% !important; float: left; text-align: left;" class="moduleTitleeClasses "> Bookings </div>
+
+        </div>
+
+    </div>
+
+    <div>
+        <div class="eclassesuldiv">
+            <ul id="AvailableBookingsul" data-role="listview" data-divider-theme="h"
+                data-theme="h" data-icon="false"></ul>
+        </div>
+    </div>
+
+
+
+
+    <div id="videopagefooter" data-role="footer" data-position="fixed" class="footerbar ui-footer ui-bar-inherit ui-footer-fixed slideup" role="contentinfo">
+        <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft ui-navbar" role="navigation">
+            <div class="footernavbarleft">
+                <div class="lhsmenuiconfooter">
+                    <div id="bookingfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="eClasse" style="background-color: #eaeaea" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+
+    <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+
+        <div id="supportpageheader">
+            <div class="eclassIcon"></div>
+            <div id="supportviewheader" style="width: 33% !important;margin-left: 0% !important; float: left; text-align: left;" class="moduleTitleeClasses "> eClasses </div>
+
+        </div>
+
+    </div>
+
+    <button class="collapsibleEclass availableClass" style="color:white !important;background-color: #5E5F5F;font-weight: bold;">Available eClasses</button>
+    <div class="content testT">
+        <div class="eclassesuldiv">
+            <ul id="AvailableEclassesul" data-role="listview" data-divider-theme="h"
+                data-theme="h" data-icon="false"></ul>
+        </div>
+    </div>
+
+    <button class="collapsibleEclass currentCalss" style="color:white !important;background-color: #5E5F5F;font-weight: bold;">Current eClasses</button>
+    <div class="content testTNew">
+        <div class="eclassesuldiv">
+            <ul id="CurrentEclassesul" data-role="listview" data-divider-theme="h"
+                data-theme="h" data-icon="false">
+            </ul>
+            <div id="bookingdisclaimerdiv"></div>
+        </div>
+    </div>
+
+
+    <script>
+        var coll = document.getElementsByClassName("collapsibleEclass");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+            content.style.maxHeight = null;
+            } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+        }
+    </script>
+
+
+    <div id="videopagefooter" data-role="footer" data-position="fixed" class="footerbar ui-footer ui-bar-inherit ui-footer-fixed slideup" role="contentinfo">
+        <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft ui-navbar" role="navigation">
+            <div class="footernavbarleft">
+                <div class="lhsmenuiconfooter">
+                    <div id="eClassfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div data-role="page" id="OtaDetailPage" style="background-color: #eaeaea" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+    
+    <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+        
+        <div id="supportpageheader">
+         
+            <div id="supportviewheader" style="width: 96% !important;margin-left: 2% !important;" class="moduleTitleOTA"> </div>
+        </div>
+        
+    </div>
+    
+    <div class="ui-content mohit" style="background-color: white !important;padding: 0px 1% !important;width: 98% !important; " role="main" id="supportmaincontent">
+        <div id="supportmaincontentwrapper" data-theme="h" class="wrapper">
+            <div id="mayankdis" style="line-height: 150%; height: auto;background-color: white;width: 100%;  font-size: 1em; padding: 4px;">
+                <!-- <h2 style="color:black;font-size: 1em !important;" id="otaTitle"></h2> -->
+                <!--<div style="padding: 10px;background-color: #e9e9e9;width: 92%;">
+                    <span id="spanperusaltime" style="color: #8f8f8f;"></span> <span class="text-red" style="font-weight: bold;" id="perusaltime"> </span>
+                    <br><span id="spanassessmenttime" style="color: #8f8f8f;"></span>: <span class="text-red" style="font-weight: bold;" id="assessmenttime" > </span>
+                </div>-->
+                <div style="padding: 10px;background-color: #e9e9e9;width: 92%;" id="timingsAttempts">
+                    <!--<span id="spanperusaltime" style="color: #8f8f8f;"></span> <span class="text-red" style="font-weight: bold;" id="perusaltime"> </span>
+                    <br><span id="spanassessmenttime" style="color: #8f8f8f;"></span>: <span class="text-red" style="font-weight: bold;" id="assessmenttime" > </span>-->
+                </div>
+                <div style="padding: 10px;background-color: #e9e9e9;width: 92%;margin-top: 5px;">
+                    <span id="spansection" style="font-weight: bold"></span>
+                    <div id="section" style="font-size: 1em !important;color: #8f8f8f;"></div>
+                    <span id="spanoverallpassmarks" style="font-weight: bold"> </span>
+                    <span class="" style="font-weight: bold;" id="overallpassmarks"> </span>
+                </div>
+            </div>
+            <!-- <h3 class="podcastheaderdiv ui-collapsible-heading" style="width: 100%;">
+            <div class=" ui-btn ui-btn-icon-right ui-btn-h" style=" padding-top: 5px; padding-bottom: 5px" id="assGuidlines"></div>
+            </h3> -->
+            
+            
+            <div id="supportdivscroller" class="scrollable" style="margin-bottom: 20%;">
+                
+                <div id="novideopodcastdiv" class="nopodcastdiv novideosdiv"></div>
+                
+                <p id="assGuidlines" style="padding-left: 4px; margin:0px;margin-top:15px;margin-bottom:-10px;color: #8f8f8f;font-size: larger;"></p>
+                
+                <div id="OtaGuidlineDiv" class="datacontent" style="padding: 10px 4px;">
+                    
+                </div>
+                <p id="testdata"></p>
+
+            </div>
+        
+            <div class="theorypadderdiv"></div>
+        </div>
+    </div>  
+    
+    <div id="supportfooter" data-role="footerOTAGuidlines" data-position="fixed" class="footerbar class3" style="height: 12%!important;display: none;">
+        <div class="amnavfieldsetdiv" style="overflow: hidden!important;">
+            <div id="prevbtndiv" class="nextprevbtndiv" data-theme="h">
+
+                <div class="navlinkdiv" id="otadisagree"><a class="prevbutton">Disagree</a></div>
+
+<!--<div class="navlinkdiv" id="otadisagree"><a id="disagreelink" class="prevbutton">Disagree</a></div> -->
+            </div>
+            <div id="nextbtndiv" class="nextprevbtndiv" data-theme="h">
+                <div class="navlinkdiv" id="otaagree" ><a class="nextbutton">Agree</a></div>
+                <!-- <div class="navlinkdiv" id="otaagree" ><a id="agreelink" class="nextbutton">Agree</a></div> -->
+            </div>
+        </div>
+        <div id="podfootericonsleft" data-role="navbar" style="background-color: #191818" class="nav-menu-bar footericonsleft">
+            <div class="footernavbarleft">
+                <div id="otabackbtn" class="lhsmenuicon btnmenuopen moduleicon"></div>
+            </div>
+        </div>
+    </div>
+
+  
+   
+</div>      
+
+
+<div data-role="page" id="OtaQuestionPage" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+    <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+        <div id="supportpageheader">
+            <div id="supportviewheader" class="otatitlefordiv" style="font-weight: normal;width: 100% !important;margin-left: 0% !important;"> </div>
+        </div>
+    </div>
+    <div style="width: 100%;" class="myButton3">
+        <div id="progressBar">
+            <span id="clockdiv" style="position:absolute;float:left;padding: 15px 0px 0px 15px;font-weight: bold;color: white;"></span>
+            <span style="float:right;padding: 15px 15px 0px 0px;font-weight: bold;color: white;" id="hideTimer">Hide</span>
+            <div></div>
+        </div>
+        
+        <div id="progressBar2" style="text-align: center;margin-top: -93px;padding: 2px;position: absolute;">
+           <span id="showHideTimer" style="margin-top: 11px;position:absolute;margin-left: -10%;color: white;    font-weight: bold;"> <img class="myButton" src="css/base/images/timerWhite.png" style="height: 17px;" /> Show </span>
+        </div>
+
+        <h3 style="display: none;padding: 0px;margin-bottom: 0px;font-size: 20px;margin: 0px;background-color: #e9e9e9;" id="ptimere"><span id="ptimermg"></span><span id="clockdiv1"></span>&nbsp;<img class="myButton" src="css/base/images/hide.png" style="height: 15px;" /></h3>
+
+
+
+           <!-- <h3 class="myButton2" style="display: none;padding: 10px;margin-bottom: 0px;font-size: 20px;">&#8986;</h3> -->
+            <h3 class="myButton2" style="display: none;margin: 0px;font-size: 20px;background-color: #e9e9e9;"><img src="css/base/images/timmer.png" style="height: 20px;" /></h3>
+            <span id="finishClick" onclick="finishClick()" class="wsnavlinkdivprevnew" style="display: none;width: 20%;float: right;margin-top: 20px;padding-top: 7px!important;margin-right: 10px;position: absolute;z-index: 9;right: 0;">Finish</span>
+            <div id='quiz' style="padding: 0px;margin-bottom: 20px;"></div>
+            <div id='quizResult' style="display:none;padding: 0px;margin-bottom: 50px;margin-top: 0px;padding: 5px;"></div>
+
+            <div id="goBack" class="" data-theme="h" style="display: none;background-color:#43966a;width: 30%;margin-bottom: 99px;float: right;padding: 10px;margin-right: 15px;margin-top: 0px;">
+                <div class="navlinkdiv" style="padding-top: 0% !important;"><a style="color:white !important;" class="nextbutton ui-link">Continue</a></div>
+            </div>
+        </div>
+        
+
+        <div id="supportfooter1"  data-role="footerOTAQuestion" data-position="fixed" class="footerbar class4" style="height: 12%!important;display: none;">
+            <div class="amnavfieldsetdiv" style="overflow: hidden!important;">
+                <div id="prevbtndiv" class="nextprevbtndiv" data-theme="h">
+                    <div id="prev" class="wsnavlinkdivprevnew"><a style= "font-weight: normal;font-size: 1.1em;" id="wsprevlink1" class="wsprevbutton">Previous</a></div>
+                </div>
+                <div id="nextbtndiv" class="nextprevbtndiv" data-theme="h">
+                    <div id="next" class="wsnavlinkdivnxtnew"><a style= "font-weight: normal;font-size: 1.1em;" id="wsnextlink1" class="wsnextbutton">Next</a></div>
+                </div>
+            </div>
+            <div id="podfootericonsleft" data-role="navbar" style="background-color: #191818" class="nav-menu-bar footericonsleft">
+                <div class="footernavbarleft">
+                     <div id="otaquestionbackbtn" class="lhsmenuicon btnmenuopen moduleicon"></div>
+                </div>
+            </div>
+        </div>
+
+
+</div>  
+
+	
+        <div data-role="page" id="coursepage" data-theme="h" class="ui-responsive-panel  ui-page-theme-h" data-dom-cache="true">
+            <div id="coursepanel" data-role="panel" data-theme="h" data-position="left" data-display="reveal" data-swipe-close="false" data-dismissible="false" class="coursemenupanel">
+                <div id="lhsmenupageheader" class="pageheaderpanel headbck ui-bar-h" data-position="fixed" data-tap-toggle="false" role="banner">
+                    <div class="headericondivlhsdiv">
+                        <div class="headericondivlhs courseiconlhs">
+                            <div id="headercourseiconlhs" class="headercourseiconlhs headericonlhs"></div>
+                        </div>
+                        <div class="headericondivlhs moduleiconlhs">
+                            <div id="headermoduleiconlhs" class="headermoduleiconlhs headericonlhs"></div>
+                        </div>
+                        <div class="headericondivlhs lessoniconlhs">
+                            <div id="headerlessoniconlhs" class="headerlessoniconlhs headericonlhs"></div>
+                        </div>
+                    </div>
+                    <div class="coursepanelheaderdiv">
+                        <div id="coursepanelheader">
+                            <div id="coursepanelheadericon" class="courseicon"></div>
+                            <div id="coursepanelheadertext">Courses</div>
+                        </div>
+                        <div id="rhsmenupageheader">
+                            <div class="headericondiv lessoniconrhs">
+                                <div id="headerlessonicon" class="headericon"></div>
+                            </div>
+                            <div class="headericondiv moduleiconrhs">
+                                <div id="headermoduleicon" class="headericon"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="coursemenupagecontent" class="ui-content" role="main">
+                    <div id="menucontentdiv">
+                        <div id="menucontentcourse" class="menuopen">
+                            <div id="menucontentcoursescroller"  class="wrapper">
+                                <div id="menucoursescroller"  class="scrollable">
+                                    <div id="sectionsearchdiv">
+                                        
+                                        <ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search for a Section" data-filter-theme="h" class="ui-listview ui-listview-inset ui-corner-all sui-shadow">
+                                        </ul>
+                                    </div>
+                                    <div id="ulcourses"></div>
+                                </div>
+								<div class="padderdiv" style="background: #E9E9E9;height: 100px;"></div>
+                            </div>
+                        </div>
+                        <div id="menucontentgroup"  class="menuclosed">
+                            <div id="menucontentgroupscroller"  class="wrapper" style="height:100vh !important">
+                                <div id="groupcontentscroller" class="scrollable">
+                                    <div id="ulgroupsdiv">
+                                        <!--<div id="grouptitlehead"></div>-->
+                                        <div id="groupset" data-theme="h" data-dividertheme="h" data-role="collapsible-set" class="scosset">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="menucontentsection"  class="menuclosed">
+                            <div id="menucontentsectionscroller"  class="wrapper">
+                                <div id="sectioncontentscroller" class="scrollable">
+                                    <div id="ulscossdiv">
+                                        <div id="sectiontitlehead"></div>
+                                        <div id="scosset" data-theme="h" data-dividertheme="h" data-role="collapsible-set" class="scosset">
+                                        </div>
+                                    </div>
+                                    <div id="sectionmenupadderdiv" class="padderdiv"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="contentheader" class="pageheader headbck ui-bar-h" data-role="header" data-hide-during-focus="" data-position="fixed" data-tap-toggle="false">
+                <div class="contenticonsdivleft">
+                    <div class="headericondivlhs courseiconlhs">
+                        <div id="courseleftmenubtn" class="headercourseiconlhs headericonlhs"></div>
+                    </div>
+                    <div class="headericondivlhs moduleiconlhs">
+                        <div id="moduleleftmenubtn" class="headermoduleiconlhs headericonlhs"></div>
+                    </div>
+                    <div class="headericondivlhs lessoniconlhs">
+                        <div id="lessonleftmenubtn" class="headerlessoniconlhs headericonlhs"></div>
+                    </div>
+                </div>
+                <div class="theoryviewhead"><h1 class="ui-title" id="theoryviewheader">Theory View</h1></div>
+                <div id="menupageheadrhs">
+                    <div class="headericondiv lessoniconrhs">
+                        <div class="headericon rhslessonicon"></div>
+                    </div>
+                    <div class="headericondiv moduleiconrhs">
+                        <div class="headericon rhsmoduleicon"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ui-content" role="main" id="coursepagecontent" >
+                <div id="coursepagecontentwrapper" class="wrapper">
+                    <div id="contentprimary" class="scrollable">
+                        <div id="lessonheaderdiv">
+                            <div id="lessonhead"></div>
+                            <div id="lessonheadclosediv">
+                                <div id="lessonheadclosebtn"></div>
+                            </div>
+                        </div>
+                        <div id="audiotheoryplayerdiv">
+                            <audio id="audiotheoryplayer" class="audiotheoryplayer" controls="controls" preload="auto"></audio>
+                        </div>
+                        <div id="initialcontent" class="initialcontent"></div>
+                        <div id="zoomcontentwrapper" class="wrapper">
+                            <div id="zoomcontentprimary" class="scrollable">
+                                <div id="theorydatacontent"></div>
+                            </div>
+                        </div>
+                        <div id="bookingcontent" class="bookingcontent">
+                            <div id="bookingheader" class="bookingheader">
+                            </div>
+                            <div id="bookingdatediv" class="bookingdatediv"><input name="bookingdate" id="bookingdate" data-role="datebox" data-options='{"mode":"calbox"}'/></div>
+                            <div id="bookingdetaildivmain">
+                                <div id="bookingdetaildiv" class="bookingdetaildiv wrapper">
+                                    <div id="bookingdetailscroller" class="scrollable" >
+                                        <div class="bookingsuldiv">
+                                            <ul id="bookingsul" data-role="listview" data-divider-theme="h"
+                                                data-theme="h" data-icon="false">
+                                            </ul>
+                                            <div id="bookingdisclaimerdiv"></div>
+                                        </div>
+                                        <div id="tabletbookpadderdiv"></div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div id="assessmentresultdiv"></div>
+
+                        </div>
+                        <div id="contentnavdiv" class="understndbuttons contentnavdiv" data-theme="h">
+                            <div class="navfieldsetdiv">
+                                <div class="understandbtndiv" data-theme="h">
+                                    <label id="understand1label" class="understandlabel">
+                                        <input type="radio" name="understand-radio" id="understand1" value="choice-1" checked="checked" /><span id="understand1txt"></span></label>
+                                </div>
+                                <div class="understandbtndiv">
+                                    <label id="understand2label" class="understandlabel">
+                                        <input type="radio" name="understand-radio" id="understand2" value="choice-2"/><span id="understand2txt"></span></label>
+                                    
+                                </div>
+                            </div>
+                            <div class="navfieldsetdiv">
+                                <div id="prevbtndiv" class="nextprevbtndiv" data-theme="h">
+                                    <div class="navlinkdiv"><a id="prevlink" class="prevbutton"></a></div>
+                                </div>
+                                <div id="nextbtndiv" class="nextprevbtndiv" data-theme="h">
+                                    <div class="navlinkdiv"><a id="nextlink" class="nextbutton"></a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="wscontentnavdiv" class="wscontentnavdiv" data-theme="h">
+                            <div id="wsnextprevbtndiv">
+                                <div class="wsnavlinkdivprev"><a id="wsprevlink" class="wsprevbutton"></a></div>
+                                <div class="wsnavlinkdivnxt"><a id="wsnextlink" class="wsnextbutton"></a></div>
+                            </div>
+                        </div>
+                        <div class="theorypadderdiv"></div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="panel" id="settingspanel" data-theme="h" data-position="right" data-display="overlay" data-swipe-close="true" data-dismissible="false" class="rhsmenupanel extramenupanel">
+                <div class="pageheaderpanelrhs headbck ui-bar-h" data-role="header" data-hide-during-focus="" data-position="fixed" data-tap-toggle="false" role="banner">
+                    <div id="settingsmenuheader"></div>
+                </div>
+                <div id="rhsmenuscrollbarcontent"  class="ui-content" role="main">
+                    <div id="rhsmenuscrollbar"  class="wrapper">
+                        <div id="rhsmenuscrollerdiv"  class="scrollable">
+                            <div id="rhsmenuiconsdiv">
+                                <ul id="ulrhsmenu" data-role="listview">
+                                    <li class="libutton">
+                                        <a class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                                            <div class="rhsmenuicon">
+                                                <div id="courseimg" class="supportimgdiv"></div>
+                                            </div><div class="rhsmenuitem coursesimgtxt liitemdisabled"></div></a>
+                                    </li>
+                                    <li data-role="list-divider" class="menudivider" data-theme="h"></li>
+                                    <li class="libutton" id="videomenubtnli">
+                                        <a href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="videomenubtn" data-iconpos="notext">
+                                            <div id="videobtndiv" class="rhsmenuicon">
+                                                <div id="videobtnimg" class="supportimgdiv"></div>
+                                            </div><div id="videobtnimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    <li class="libutton" id="audiomenubtnli">
+                                        <a href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="audiomenubtn" data-iconpos="notext">
+                                            <div id="audiobtndiv" class="rhsmenuicon">
+                                                <div id="audiobtnimg" class="supportimgdiv"></div>
+                                            </div><div id="audiobtnimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    <li class="libutton" id="plistmenubtnli">
+                                        <a href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="plistmenubtn" data-iconpos="notext">
+                                            <div id="plbtndiv" class="rhsmenuicon">
+                                                <div id="plbtnimg" class="supportimgdiv"></div>
+                                            </div><div id="plbtnimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    <li data-role="list-divider" class="menudivider" data-theme="h"></li>
+                                    <li class="libutton">
+                                        <a id="refreshbtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                                            <div class="rhsmenuicon">
+                                                <div id="podrefreshimg" class="supportimgdiv"></div>
+                                            </div><div class="rhsmenuitem refreshimgtxt"></div></a>
+                                    </li>
+                                    <li class="libutton">
+                                        <a href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="helpdeskmenubtn" data-iconpos="notext">
+                                            <div id="helpdeskbtndiv" class="rhsmenuicon">
+                                                <div id="helpdeskimg" class="supportimgdiv"></div>
+                                            </div><div id="helpdeskimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    <li class="libutton">
+                                        <a id="supportmenubtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                                            <div class="rhsmenuicon">
+                                                <div id="supportimg" class="supportimgdiv"></div>
+                                            </div><div id="supportimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    <li class="libutton">
+                                        <a id="mainlogoutbtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                                            <div class="rhsmenuicon">
+                                                <div id="logoutimg" class="supportimgdiv"></div>
+                                            </div><div id="logoutimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    <li data-role="list-divider" class="menudivider" data-theme="h"></li>
+                                    <li class="libutton">
+                                        <a id="closemenubtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                                            <div class="rhsmenuicon">
+                                                <div id="closehelpimg" class="supportimgdiv"></div>
+                                            </div><div id="closehelpimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: none;" id="footerdatarool" data-role="footer" data-position="fixed" class="footerbar">
+                    <div class="rhsmenuicondiv">
+                        <div id="settingspanelrhs" class="rhsfooterion settingsicon"></div>
+                    </div>
+                </div>
+            </div><!-- /panel -->
+            <div id="pagefooter"  style="display: none;" data-position="fixed" class="footerbar ui-footer ui-bar-inherit ui-footer-fixed" data-tap-toggle="false">
+                <div id="footericonsleft" class="nav-menu-bar footericonsleft">
+                    <div class="footernavbarleft">
+                        <div class="lhsmenuicondiv"><div id="footerleftbckbtn" class="lhsmenuicon"></div></div>
+                        <div class="lhsmenuicondiv"><div id="podcastmenubtn" class="lhsmenuicon"></div></div>
+                        <div class="lhsmenuicondiv"><div id="eclassmenubtn" class="lhsmenuicon"></div></div>
+                        <div class="lhsmenuicondiv"><div id="bookingmenubtn" class="lhsmenuicon"></div></div>
+                        <div class="lhsmenuicondiv"><div id="pdfmenubtn" class="lhsmenuicon"></div></div>
+                    </div>
+                </div>
+                <div class="rhsmenuicondiv">
+                    <div id="coursepanelheaderrhs" class="rhsfooterion settingsicon"></div>
+                    <div id="coursepanelhomerhs" class="rhsfooterion homeicon"></div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="scripts/base/jquery.mobile.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/base/jquery-ui.min.js"></script>
+        
+        <script type="text/javascript" src="scripts/base/scoImageMargins.js"></script> 
+
+        <!--<script type="text/javascript" src="scripts/base/jquery-3.4.1.min.js"></script>-->
+
+        <script type="text/javascript" src="scripts/base/TumultHypeAnnimation.js"></script>
+        
+
+        <script type="text/javascript" src="scripts/base/jquery.countdownTimer.js"></script>
+        <script type="text/javascript" src="scripts/base/jquery-touchpunch.js"></script>
+        <script type="text/javascript" src="scripts/base/eteacherclasses.js"></script>
+        <script type="text/javascript" src="scripts/base/controller.js"></script>
+        <script type="text/javascript" src="scripts/base/configutils.js"></script>
+        <script type="text/javascript" src="scripts/base/connection.js"></script>
+        <script type="text/javascript" src="scripts/base/eteacher.js"></script>
+        <script type="text/javascript" src="scripts/base/commonScript.js"></script>
+        <script type="text/javascript" src="scripts/base/eteacherutils.js"></script>
+
+        <script type="text/javascript" src="scripts/base/podcastpage.js"></script>
+        <script type="text/javascript" src="scripts/base/podcastmedia.js"></script>
+        <script type="text/javascript" src="scripts/base/coursepodcast.js"></script>
+        <script type="text/javascript" src="scripts/base/eclassvideo.js"></script>
+        <script type="text/javascript" src="scripts/base/userplaylist.js"></script>
+        <script type="text/javascript" src="scripts/base/mediaelement-and-player.js"></script>
+        <script type="text/javascript" src="scripts/base/jqm-datebox.core.js"></script>
+        <script type="text/javascript" src="scripts/base/jqm-datebox.mode.calbox.js"></script>
+        <script type="text/javascript" src="scripts/base/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="scripts/base/Date2.js"></script>
+        <link rel="stylesheet" type="text/css" href="scripts/base/testing2.css" />
+        <link rel="stylesheet" type="text/css" href="scripts/base/testing3.css" />
+        <script src="scripts/base/testing1.js"></script>
+        <script type="text/javascript" src="scripts/base/helpdesk.js"></script>
+        <script type="text/javascript" src="scripts/base/viewerUpper.js"></script>
+        <script type="text/javascript">
+            
+
+            document.addEventListener('deviceready', deviceReady, false);
+            function deviceReady() {
+                window.plugins.preventscreenshot.disable(successCallback, errorCallback);
+
+                function successCallback(result) {
+
+                }
+                 
+                function errorCallback(error) {
+                  //alert(error);
+                }
+
+                
+				var permissions = cordova.plugins.permissions;
+				screen.orientation.lock('portrait');
+                permissions.checkPermission(permissions.ACCESS_FINE_LOCATION, function( status ){
+                  if ( status.hasPermission ) {
+                    permissions.requestPermission(permissions.ACCESS_FINE_LOCATION, success, error);
+                    function error() {
+                      navigator.notification.alert('Location permission is not turned on');
+                    }
+                    function success( status ) {
+                      
+                        permissions.checkPermission(permissions.WRITE_EXTERNAL_STORAGE, function( status ){
+                            if ( status.hasPermission ) {
+                                
+                            }
+                            else {
+                                
+                                permissions.requestPermission(permissions.WRITE_EXTERNAL_STORAGE, success, error);
+                                function error() {
+                                    navigator.notification.alert('Storage permission is not turned on');
+                                }
+                                function success( status ) {
+                                    if( !status.hasPermission ) error();
+                                }
+                                
+                            }
+                        });
+                      if( !status.hasPermission ) error();
+                    }
+                  }
+                  else {
+                    permissions.requestPermission(permissions.ACCESS_FINE_LOCATION, success, error);
+                    function error() {
+                      navigator.notification.alert('Location permission is not turned on');
+                    }
+                    function success( status ) {
+                      
+                      permissions.checkPermission(permissions.WRITE_EXTERNAL_STORAGE, function( status ){
+                      if ( status.hasPermission ) {
+                        
+                      }
+                      else {
+                        permissions.requestPermission(permissions.WRITE_EXTERNAL_STORAGE, success, error);
+                        function error() {
+                          navigator.notification.alert('Storage permission is not turned on');
+                        }
+                        function success( status ) {
+                            if( !status.hasPermission ) error();
+                        }
+                        
+                      }
+                    });
+                      if( !status.hasPermission ) error();
+                    }
+                    
+                  }
+                });
+                deviceReadyInit();
+                dd.resolve();
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "applicationId": "com.eteacherpro.trainfitness",
+  "variantType": "BASE_APK",
+  "elements": [
+    {
+      "outputType": {
+        "type": "PROCESSED_RES"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": 800300012,
+        "versionName": "11.04",
+        "outputFile": "app-debug.apk",
+        "fullName": "debug",
+        "baseName": "debug",
+        "dirName": ""
+      },
+      "path": "resources-debug.ap_",
+      "properties": {
+        "packageId": "com.eteacherpro.trainfitness",
+        "split": "",
+        "minSdkVersion": "22"
+      }
+    }
+  ]
+}

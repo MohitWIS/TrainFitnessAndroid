@@ -1,0 +1,150 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.eteacherpro.trainfitness"
+4    android:hardwareAccelerated="true"
+5    android:versionCode="800200012"
+6    android:versionName="11.03" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="22"
+9-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml
+10        android:targetSdkVersion="29" />
+10-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml
+11
+12    <supports-screens
+12-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:3:5-191
+13        android:anyDensity="true"
+13-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:3:23-48
+14        android:largeScreens="true"
+14-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:3:49-76
+15        android:normalScreens="true"
+15-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:3:77-105
+16        android:resizeable="true"
+16-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:3:106-131
+17        android:smallScreens="true"
+17-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:3:132-159
+18        android:xlargeScreens="true" />
+18-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:3:160-188
+19
+20    <uses-permission android:name="android.permission.INTERNET" />
+20-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:4:5-67
+20-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:4:22-64
+21    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+21-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:19:5-77
+21-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:19:22-74
+22    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+22-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:20:5-81
+22-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:20:22-78
+23    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+23-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:21:5-79
+23-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:21:22-76
+24    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+24-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:22:5-81
+24-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:22:22-78
+25    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+25-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:23:5-71
+25-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:23:22-68
+26    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+26-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:24:5-80
+26-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:24:22-77
+27    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+27-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:25:5-75
+27-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:25:22-72
+28    <uses-permission android:name="android.permission.RECORD_VIDEO" />
+28-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:26:5-71
+28-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:26:22-68
+29    <uses-permission android:name="android.permission.VIBRATE" />
+29-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:27:5-66
+29-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:27:22-63
+30    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+30-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:28:5-79
+30-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:28:22-76
+31    <uses-permission android:name="android.permission.WAKE_LOCK" />
+31-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:29:5-68
+31-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:29:22-65
+32
+33    <uses-feature android:name="android.hardware.location.gps" />
+33-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:30:5-66
+33-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:30:19-63
+34
+35    <application
+35-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:5:5-18:19
+36        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+36-->[com.android.support:support-compat:28.0.0] C:\Users\Lenovo\.gradle\caches\transforms-2\files-2.1\f3c9c224d5b78550edb6a4276af5e904\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+37        android:hardwareAccelerated="true"
+37-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:5:54-88
+38        android:icon="@mipmap/icon"
+38-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:5:89-116
+39        android:label="@string/app_name"
+39-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:5:117-149
+40        android:supportsRtl="true"
+40-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:5:150-176
+41        android:usesCleartextTraffic="true" >
+41-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:5:18-53
+42        <activity
+42-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:6:9-11:20
+43            android:name="com.eteacherpro.trainfitness.MainActivity"
+43-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:6:205-232
+44            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+44-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:6:19-135
+45            android:label="@string/activity_name"
+45-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:6:136-173
+46            android:launchMode="singleTop"
+46-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:6:174-204
+47            android:theme="@android:style/Theme.DeviceDefault.NoActionBar"
+47-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:6:233-295
+48            android:windowSoftInputMode="adjustResize" >
+48-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:6:296-338
+49            <intent-filter android:label="@string/launcher_name" >
+49-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:7:13-10:29
+49-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:7:28-65
+50                <action android:name="android.intent.action.MAIN" />
+50-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:8:17-69
+50-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:8:25-66
+51
+52                <category android:name="android.intent.category.LAUNCHER" />
+52-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:9:17-77
+52-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:9:27-74
+53            </intent-filter>
+54        </activity>
+55
+56        <service android:name="de.appplant.cordova.plugin.background.ForegroundService" />
+56-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:12:9-91
+56-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:12:18-88
+57
+58        <provider
+59            android:name="org.apache.cordova.camera.FileProvider"
+59-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:13:149-202
+60            android:authorities="com.eteacherpro.trainfitness.cordova.plugin.camera.provider"
+60-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:13:19-88
+61            android:exported="false"
+61-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:13:89-113
+62            android:grantUriPermissions="true" >
+62-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:13:114-148
+63            <meta-data
+63-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:14:13-123
+64                android:name="android.support.FILE_PROVIDER_PATHS"
+64-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:14:24-74
+65                android:resource="@xml/camera_provider_paths" />
+65-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:14:75-120
+66        </provider>
+67
+68        <activity
+68-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:16:9-181
+69            android:name="com.hutchind.cordova.plugins.streamingmedia.SimpleAudioStream"
+69-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:16:102-178
+70            android:configChanges="orientation|screenSize"
+70-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:16:19-65
+71            android:label="Simple Audio Stream" />
+71-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:16:66-101
+72        <activity
+72-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:17:9-181
+73            android:name="com.hutchind.cordova.plugins.streamingmedia.SimpleVideoStream"
+73-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:17:102-178
+74            android:configChanges="orientation|screenSize"
+74-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:17:19-65
+75            android:label="Simple Video Stream" />
+75-->E:\MSDTrainFitness\Android\Mohit MSD\Train New Build\TRAIN\platforms\android\app\src\main\AndroidManifest.xml:17:66-101
+76    </application>
+77
+78</manifest>
