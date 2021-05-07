@@ -3290,14 +3290,15 @@ function downloadHDImages(fileName, downloadIssueid){
             msgTitle = resources.eclassesNew;
             msgBtnValue = resources.btnViewCancel;
             msgStr = resources.downloadFolder;
-            navigator.notification.confirm(msgStr, function(choice) {
+            /*navigator.notification.confirm(msgStr, function(choice) {
+                console.log(folderurl);
                 if (choice == 2) {
 
                 }
                 else{
                     window.plugins.fileOpener.open(folderurl);
                 }
-            }, msgTitle, msgBtnValue);
+            }, msgTitle, msgBtnValue);*/
         }, msgTitle, msgBtnValue);
         //console.log("download complete: " + entry.toURL());
     },

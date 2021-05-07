@@ -2544,7 +2544,7 @@ li.scheduleitem {
     color:#FFFFFF !important;
     background-color: #374C68 !important;
     padding-top: 5px;
-    min-height: 12.4px;
+    min-height: 12.3px;
 }
 .cancelbookbtn {
     width: 13%;
@@ -4974,10 +4974,32 @@ ul .off {
 .greyColorButton{
     background-color: #acacac !important;
 }
-@media (min-width:641px)  {
+@media (min-width:601px)  {
+    .scheduleitemhead {
+        float: left;
+        width: 70%;
+        white-space: normal;
+        word-wrap: break-word;
+        padding-right: 1%;
+        padding-top: 10px;
+        font-size: 0.8em;
+        padding-left: 2%;
+    }
+    .bookbtn {
+        width: 15%;
+        float: left;
+        padding: 0;
+        font-size: 0.8em;
+        background-color: #ef5351;
+        margin-left: 0%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        min-height: 19.3px;
+    }
     #bookingsul li {
         padding-bottom: 0px;
         padding-top: 0px;
+        height: 31px;
     }
     .viewbookbtn, .cancelbookbtn, .cancelschedulebookbtn, .viewschedulebookbtn, .nocancelschedulebookbtn, .attendschedulebookbtn{
         margin: 0;
@@ -4985,8 +5007,8 @@ ul .off {
         padding-left: 0;
         color: #FFFFFF !important;
         background-color: #374C68 !important;
-        padding-top: 9px;
-        min-height: 12.4px;
+        padding-top: 6px !important;
+        min-height: 16px;
     }
     ul.podcastcatul, ul.podcategoryul, ul.eclasscategoryul{
         margin: 0% !important;
