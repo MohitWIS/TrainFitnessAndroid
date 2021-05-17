@@ -7,6 +7,6 @@ public final class BuildConfig {
   public static final boolean DEBUG = false;
   public static final String APPLICATION_ID = "com.eteacherpro.trainfitness";
   public static final String BUILD_TYPE = "release";
-  public static final int VERSION_CODE = 800200012;
-  public static final String VERSION_NAME = "11.03";
+  public static final int VERSION_CODE = 800300012;
+  public static final String VERSION_NAME = "11.04";
 }

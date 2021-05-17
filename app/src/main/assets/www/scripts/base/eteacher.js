@@ -8315,6 +8315,27 @@ function resetStatusDisplay(type) {
     }
 }
 
+/*function resetStatusDisplayNew(type) {
+    try {
+        switch (type) {
+            case "module":
+                var id = "module-" + activeModule.courseid + "-" + activeModule.basemoduleid;
+                var classStatus = setNewStatusClass(activeModule.status, activeModule.accessible);
+                var modDiv = $("#" + id);
+                if ($("#" + id) != undefined) {
+                    $("#" + id).children(".limodtitleactive").children(".statuslock").removeClass("status1").removeClass("status2").removeClass("status3");
+                    $("#" + id).children(".limodtitleactive").children(".statuslock").removeClass("statusns").removeClass("statuscp").removeClass("statusac");
+                    $("#" + id).children(".limodtitleactive").children(".statuslock").addClass(classStatus);
+                }
+                break;
+            default:
+                break;
+        }
+    } catch (e) {
+        errorHandler("resetStatusDisplayNew", e);
+    }
+}*/
+
 function setNewStatusClass(status, accessible) {
     var classStatus = "status1 statuscp";
     if (status == courseStatus.InProgress && accessible===true) {
@@ -11049,6 +11070,7 @@ function setModulesValues(){
                           activeSection = undefined;
                           activeSCO = undefined;
                           setUserPosition(false, "#coursepage", true);
+                          //resetStatusDisplayNew("module");
                           displayModuleCertificate(function() {});
                           } else {
                           if (activeModule.status === "In Progress" || activeModule.status === "Not Started") {
@@ -11065,7 +11087,7 @@ function setModulesValues(){
                           requestModuleCertificate(function() {
                                                    activeModule.status = "Completed";
                                                    resetStatusDisplay("module");
-                                                   refreshMenu("refresh");
+                                                   //refreshMenu("refresh");
                                                    var id = "#module-" + activeModule.courseid + "-" + activeModule.basemoduleid;
                                                    if ($(id) != undefined) {
                                                    setTimeout(function() {

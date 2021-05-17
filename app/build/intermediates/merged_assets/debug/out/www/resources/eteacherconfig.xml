@@ -26,7 +26,7 @@
 
         <item>
             <const>CS_SITE_URL_BASE</const>
-            <value>http://test.mobilestudentdesktop.eteacher.pro/</value>
+            <value>https://mobilestudentdesktop.eteacher.pro/</value>
         </item>
         <item>
             <const>CS_APP_LANGUAGE</const>

@@ -3193,7 +3193,7 @@ function uploadHelpdeskMultiImage(fileURL,filecount){
         }
 
 
-        console.log("Sent = " + r.bytesSent);
+      console.log("Sent = " + r.bytesSent);
     }
     /*function onSuccess(r) {
        $("#filename").append('<p class="deleteImages" style="margin:0px;"  id='+ fileNameWOSpace + ' >'+fileNameWOSpace+'<span  id='+ fileNameWOSpace + ' style=color:#ef5351; >  &#10006;</span></p><br>');
@@ -3290,14 +3290,15 @@ function downloadHDImages(fileName, downloadIssueid){
             msgTitle = resources.eclassesNew;
             msgBtnValue = resources.btnViewCancel;
             msgStr = resources.downloadFolder;
-            navigator.notification.confirm(msgStr, function(choice) {
+            /*navigator.notification.confirm(msgStr, function(choice) {
+                console.log(folderurl);
                 if (choice == 2) {
 
                 }
                 else{
                     window.plugins.fileOpener.open(folderurl);
                 }
-            }, msgTitle, msgBtnValue);
+            }, msgTitle, msgBtnValue);*/
         }, msgTitle, msgBtnValue);
         //console.log("download complete: " + entry.toURL());
     },

@@ -3,8 +3,8 @@
     package="com.eteacherpro.trainfitness"
     android:hardwareAccelerated="true"
     android:targetSandboxVersion="2"
-    android:versionCode="800200012"
-    android:versionName="11.03" >
+    android:versionCode="800300012"
+    android:versionName="11.04" >
 
     <uses-sdk
         android:minSdkVersion="22"

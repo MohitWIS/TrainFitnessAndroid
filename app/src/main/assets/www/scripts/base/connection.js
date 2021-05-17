@@ -3193,7 +3193,7 @@ function uploadHelpdeskMultiImage(fileURL,filecount){
         }
 
 
-        console.log("Sent = " + r.bytesSent);
+      console.log("Sent = " + r.bytesSent);
     }
     /*function onSuccess(r) {
        $("#filename").append('<p class="deleteImages" style="margin:0px;"  id='+ fileNameWOSpace + ' >'+fileNameWOSpace+'<span  id='+ fileNameWOSpace + ' style=color:#ef5351; >  &#10006;</span></p><br>');
