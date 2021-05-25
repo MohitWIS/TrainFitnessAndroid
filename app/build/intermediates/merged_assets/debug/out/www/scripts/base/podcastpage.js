@@ -108,7 +108,7 @@ $(document).on("pagebeforeshow", "#podcastpage", function(e) {
               rhsMenuOpen = false;
               mediaSetRefresh();
               checkASDUserPodState(true, function(ret) {});
-               refreshMenu("refresh");
+              refreshMenu("refresh");
                //refreshMenu("refresh");
                loadCoursePage = false;
                startupPageid = "#coursepage";
@@ -1307,7 +1307,7 @@ function playAudioAudio(audio, category, updateplayer) {
         
         
     } catch (e) {
-        errorHandler("playAudioAudio", e);
+        //errorHandler("playAudioAudio", e);
     }
 }
 playlistprev="";

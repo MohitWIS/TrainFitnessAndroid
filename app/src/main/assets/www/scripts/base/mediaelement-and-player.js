@@ -1683,7 +1683,7 @@ if (typeof jQuery != "undefined") {
                          t.hasFocus = true;
                          }, false);
   t.media.addEventListener("ended", function(e) {
-                           if (t.options.autoRewind) {
+                           if (!t.options.autoRewind) {
                            try {
                            t.media.setCurrentTime(0);
                            } catch (exp) {}

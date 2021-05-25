@@ -1307,7 +1307,7 @@ function playAudioAudio(audio, category, updateplayer) {
         
         
     } catch (e) {
-        errorHandler("playAudioAudio", e);
+        //errorHandler("playAudioAudio", e);
     }
 }
 playlistprev="";

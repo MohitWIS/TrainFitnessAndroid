@@ -11071,7 +11071,13 @@ function setModulesValues(){
                           activeSCO = undefined;
                           setUserPosition(false, "#coursepage", true);
                           //resetStatusDisplayNew("module");
-                          displayModuleCertificate(function() {});
+                          var psgeIdCheck = $('body'). pagecontainer('getActivePage'). prop("id");
+                          if(psgeIdCheck == "podcastpage" || psgeIdCheck == "coursepodcastpage"){
+                          }
+                          else{
+                            displayModuleCertificate(function() {});
+                          }
+
                           } else {
                           if (activeModule.status === "In Progress" || activeModule.status === "Not Started") {
                           if (deviceIsOnline === true) {
@@ -11087,7 +11093,7 @@ function setModulesValues(){
                           requestModuleCertificate(function() {
                                                    activeModule.status = "Completed";
                                                    resetStatusDisplay("module");
-                                                   //refreshMenu("refresh");
+                                                   refreshMenu("refresh");
                                                    var id = "#module-" + activeModule.courseid + "-" + activeModule.basemoduleid;
                                                    if ($(id) != undefined) {
                                                    setTimeout(function() {
