@@ -7136,32 +7136,36 @@ function getWorksheetContent(direction) {
     try {
       //alert("hi")
         var id = ($(".worksheetcontent")).attr("id");
-        var ids = id.split("-");
-        var qId = ids[1];
-        worksheetqId = qId;
-        worksheetdirection = direction;
-        var continueQuestion = false;
-        if (direction === "next") {
-            if ($(".worksheetcontent").hasClass("qinputtype")) {
-                var answer = $("#wsqinput-0").val();
-                if (answer.length > 0) {
-                    activeSection.worksheet.setQuestionAnswer(qId, answer, function() {});
+        console.log('worksheet id- '+ id);
+        if(id == undefined){
+        }else{
+            var ids = id.split("-");
+            var qId = ids[1];
+            worksheetqId = qId;
+            worksheetdirection = direction;
+            var continueQuestion = false;
+            if (direction === "next") {
+                if ($(".worksheetcontent").hasClass("qinputtype")) {
+                    var answer = $("#wsqinput-0").val();
+                    if (answer.length > 0) {
+                        activeSection.worksheet.setQuestionAnswer(qId, answer, function() {});
+                    }
                 }
             }
-        }
-        var question = activeSection.worksheet.getQuestion(qId, "same");
-        if (question != null && question.useranswer.length === 0 && direction === "next") {
-            continueQuestion = false;
-            msgTitle = resources.worksheet;
-            msgBtnValue = resources.btnYesNo;
-            msgStr = resources.questionNotAnswered;
-            navigator.notification.confirm(msgStr, actionUserAnswer, msgTitle, msgBtnValue);
-        } else {
-            continueQuestion = true;
-            worksheetqId = 0;
-        }
-        if (continueQuestion === true) {
-            getWorksheetContentNext(direction, qId);
+            var question = activeSection.worksheet.getQuestion(qId, "same");
+            if (question != null && question.useranswer.length === 0 && direction === "next") {
+                continueQuestion = false;
+                msgTitle = resources.worksheet;
+                msgBtnValue = resources.btnYesNo;
+                msgStr = resources.questionNotAnswered;
+                navigator.notification.confirm(msgStr, actionUserAnswer, msgTitle, msgBtnValue);
+            } else {
+                continueQuestion = true;
+                worksheetqId = 0;
+            }
+            if (continueQuestion === true) {
+                getWorksheetContentNext(direction, qId);
+            }
         }
     } catch (e) {
         errorHandler("getWorksheetContent", e);
