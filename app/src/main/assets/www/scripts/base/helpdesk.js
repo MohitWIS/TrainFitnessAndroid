@@ -75,7 +75,7 @@ $(document).on("pagebeforeshow", "#helpdeskpage", function(e) {
                try {
                //refreshMenu("refresh");
                //alert("in");
-               $(".extramenupanel").panel("close");
+
                rhsMenuOpen = false;
                mediaSetRefresh();
                checkASDUserPodState(false, function(ret) {});
@@ -592,7 +592,7 @@ $(document).on("pagebeforeshow", "#helpdeskpage", function(e) {
                                                          });
 
                $(".addfileslistdiv").hide();
-
+                $(".extramenupanel").panel("close");
                showPleaseWait();
                setUserPosition(false, "#helpdeskpage", false);
                } catch (e) {

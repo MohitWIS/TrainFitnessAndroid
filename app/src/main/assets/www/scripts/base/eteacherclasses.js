@@ -1,4 +1,5 @@
 var scoContentOK = true;
+var assessmentschedulesNew = new Array();
 var Courses = function() {
     try {
         this.init();
@@ -1755,7 +1756,7 @@ getAssessmentSchedules: function(returnFunction) {
                                                   schedule = new AssessmentSchedule(that.courseid, that.basemoduleid, scheduleObj.AssessmentScheduleID, scheduleObj.AssessmentItemID, scheduleObj.Duration, scheduleObj.VenueRoomID, scheduleObj.ScheduledDate, scheduleObj.StartTime, scheduleObj.EndTime, scheduleObj.VenueName, scheduleObj.VenueTelNo, scheduleObj.Directions, scheduleObj.Street1, scheduleObj.Street2, scheduleObj.City, scheduleObj.Region, scheduleObj.PostCode, scheduleObj.TotalBookings, scheduleObj.RoomName, scheduleObj.ActualCapacity, scheduleObj.AssessmentBookingID, scheduleObj.ScheduledDateString, scheduleObj.HighLightDates, scheduleObj.VenueID, scheduleObj.Latitude, scheduleObj.Longitude, scheduleObj.RestrictBooking,scheduleObj.ZoomJoinURL, scheduleObj.ShowAttendButton, scheduleObj.ZoomMeetingPassword);
                                                   schedule.booking = new BookingItem();
                                                   that.assessmentschedules.push(schedule);
-                                                  
+
                                                   bookingObj = scheduleObj.BookingItem;
                                                   if (bookingObj != undefined && bookingObj.length != 0) {
                                                   bookingItem = new BookingItem(bookingObj.AssessmentItemId, bookingObj.AssessmentScheduleId, bookingObj.AssessmentBookingId, bookingObj.OTAGUID, bookingObj.EmailNotificationStatus, bookingObj.BookingDate, bookingObj.BookingDateString, bookingObj.AllowCancel, bookingObj.ResultPending);
@@ -2130,7 +2131,7 @@ getBookingListView: function() {
                     $("#bookingdisclaimerdiv").html(resources.bookingDisclaimerDiv);
                 } else {
                     //schedulesStr += "<div class='awaitingresults'>" + resources.bookingAwaitingResult + "</div></li>";
-                    schedulesStr += "<div style='width:21% !important;text-align:center;margin-left: 6% !important;padding-top: 11px;' class='cancelbookbtn greyColorButton'>"+ resources.bookingAwaitingResult +"</div></li>";
+                    schedulesStr += "<div style='width:83px !important;text-align:center;margin-left: 3% !important;padding-top: 11px;' class='cancelbookbtn greyColorButton'>"+ resources.bookingAwaitingResult +"</div></li>";
                     $("#bookingdisclaimerdiv").addClass("nodisplayimp");
                 }
                 break;
