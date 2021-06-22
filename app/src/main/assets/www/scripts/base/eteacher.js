@@ -9046,6 +9046,9 @@ function getMyCurrentBookingScheduleTest(returnFunction){
                                    scheduleObj = schedulesObj;
                                    schedule = new AssessmentSchedule(that.courseid, that.basemoduleid, scheduleObj.AssessmentBookingId, scheduleObj.AssessmentItemID, scheduleObj.Duration, scheduleObj.VenueRoomID, scheduleObj.ScheduledDate, scheduleObj.ScheduledTime, scheduleObj.EndTime, scheduleObj.VenueName, scheduleObj.VenueTelNo, scheduleObj.Directions, scheduleObj.Street1, scheduleObj.Street2, scheduleObj.City, scheduleObj.Region, scheduleObj.PostCode, scheduleObj.TotalBookings, scheduleObj.RoomName, scheduleObj.ActualCapacity, scheduleObj.AssessmentBookingID, scheduleObj.ScheduledDateString, scheduleObj.HighLightDates, scheduleObj.VenueID, scheduleObj.Latitude, scheduleObj.Longitude, scheduleObj.RestrictBooking,scheduleObj.ZoomJoinURL, scheduleObj.ShowAttendButton, scheduleObj.ZoomMeetingPassword);
                                    schedule.booking = new BookingItem();
+                                   while (assessmentschedulesNew.length > 0) {
+                                       assessmentschedulesNew.pop();
+                                   }
                                    assessmentschedulesNew.push(schedule);
                                    that.testData.push(ret);
                                    bookingObj = scheduleObj.BookingItem;

@@ -336,7 +336,7 @@ function deviceReadyInit() {
 
 function deviceReadyInitSet() {
     try {
-
+           //alert(window.screen.width);
         if (device.platform === "iOS") {
             iosDevice = true;
         }
@@ -2961,117 +2961,244 @@ $(document).on("pagecreate", "#venuedetailpage", function(event) {
                });
 $(document).on("pagebeforeshow", "#venuedetailpage", function(event) {
                try {
-               audioTheoryPlayerLoaded = false;
-               pageLoad = "#venudetailpage";
-               setTimeout(function() {
-                          mapScroller = new IScroll("#bookingpopupcontent", {
-                                                    fadeScrollbars: false,
-                                                    useTransform: true,
-                                                    useTransition: false,
-                                                    bindToWrapper: true,
-                                                    bounce: false
-                                                    });
-                          }, 300);
-               var schedule = activeModule.getAssessmentScheduleById(venueAssessmentScheduleId);
-               var detailStr = "There are no details currently available.";
-               if (schedule != null) {
-               detailStr = schedule.getScheduleDetails();
-               }
-               var location = schedule.venuename;
-               $("#mapdiv").empty();
-               if (isDeviceOnline() === false) {
-               $("#mapdiv").hide();
-               $(".directionsbtndiv").hide();
-               } else {
-               $("#mapdiv").show();
-               $("#mapdiv").html(mapDiv);
-               $(".directionsbtndiv").show();
-               }
-               
-               
-               $("#venuefooterbckbtn").off("vclick");
-               $("#venuefooterbckbtn").on("vclick", function(event) {
-                                          event.preventDefault();
-                                          if(backButtonOK===true){
-                                          backButtonOK=false;
-                                          prevPage = "#venuedetailpage";
-                                          pageLoad = "#coursepage";
-                                          if (device.platform === "Android") {
-                                          $("#extramenupanel").panel("close");
-                                          history.back();
-                                          } else {
-                                          //$.mobile.navigate("#coursepage");
-                                          $.mobile.back();
+               var pageName = $('.ui-page-active').attr('id')
+               if(pageName == "bookingPage"){
+                  audioTheoryPlayerLoaded = false;
+                  pageLoad = "#venudetailpage";
+                  setTimeout(function() {
+                             mapScroller = new IScroll("#bookingpopupcontent", {
+                                                       fadeScrollbars: false,
+                                                       useTransform: true,
+                                                       useTransition: false,
+                                                       bindToWrapper: true,
+                                                       bounce: false
+                                                       });
+                             }, 300);
+                  var schedule = getAssessmentScheduleByIdNew(venueAssessmentScheduleId);
+                  var detailStr = "There are no details currently available.";
+                  if (schedule != null) {
+                  detailStr = schedule.getScheduleDetails();
+                  }
+                  var location = schedule.venuename;
+                  $("#mapdiv").empty();
+                  if (isDeviceOnline() === false) {
+                  $("#mapdiv").hide();
+                  $(".directionsbtndiv").hide();
+                  } else {
+                  $("#mapdiv").show();
+                  $("#mapdiv").html(mapDiv);
+                  $(".directionsbtndiv").show();
+                  }
+
+
+                  $("#venuefooterbckbtn").off("vclick");
+                  $("#venuefooterbckbtn").on("vclick", function(event) {
+                                             event.preventDefault();
+                                             if(backButtonOK===true){
+                                             backButtonOK=false;
+                                             prevPage = "#venuedetailpage";
+                                             pageLoad = "#coursepage";
+                                             if (device.platform === "Android") {
+                                             $("#extramenupanel").panel("close");
+                                             history.back();
+                                             } else {
+                                             //$.mobile.navigate("#coursepage");
+                                             $.mobile.back();
+                                             }
+                                             setTimeout(function() {
+                                                        $("#theoryviewheader").html(resources.bookingHead);
+                                                        $("#theoryviewheader").addClass("noicon");
+                                                        }, 600);
+                                             setPagePadderDiv("mapScroller", false);
+                                             setTimeout(function(){backButtonOK=true},600);
+                                             }
+                                             });
+
+                  $("#venueclosebtn").off("vclick");
+                  $("#venueclosebtn").on("vclick", function(event) {
+                                         if(menubtnOk===true){
+                                         $("#venuefooterbckbtn").trigger("vclick");
+                                         setTimeout(function(){menubtnOk=true;},300);
+                                         }
+
+                                         });
+                  if (retinaDisplay === true) {
+                  $("#venuedetailpage").addClass("retina");
+                  }
+                  setPagePadderDiv("mapScroller", false);
+                  var address = schedule.address;
+                  if (isDeviceOnline() === true && googleAvailable === true && setGoogleJSOK === true) {
+                  getLatLong(schedule, address, function(latLng) {
+                             var style = (tablet === true) ? google.maps.ZoomControlStyle.LARGE : google.maps.ZoomControlStyle.SMALL;
+                             currentLatlng = latLng;
+                             $("#map_canvas").gmap({
+                                                   center: currentLatlng,
+                                                   zoom: 14,
+                                                   disableDefaultUI: false,
+                                                   zoomControl: true,
+                                                   zoomControlOptions: {
+                                                   style: style
+                                                   },
+                                                   scaleControl: true,
+                                                   callback: function() {
+                                                   self = this;
+                                                   self.addMarker({
+                                                                  position: currentLatlng,
+                                                                  bounds: false
+                                                                  }).click(function() {
+                                                                           self.openInfoWindow({
+                                                                                               content: "<div class='mapmarkertitle'>" + schedule.venuename + "</div>"
+                                                                                               }, this);
+                                                                           });
+                                                   setTimeout(function() {
+                                                              self.refresh();
+                                                              }, 300);
+                                                   $("#mapsubmit").off("vclick");
+                                                   $("#mapsubmit").on("vclick", function(event) {
+                                                                      try {
+                                        directions.navigateTo(currentLatlng);
+                                      } catch (e) {}
+                                                                      });
+                                                   }
+                                                   });
+                             });
+                  } else {
+                  $("#mapdiv").hide();
+                  $(".directionsbtndiv").hide();
+                  }
+                  $("#bookcontentdetail").html(detailStr);
+                  setPagePadderDiv("mapScroller", false);
+
+               }else{
+                   audioTheoryPlayerLoaded = false;
+                   pageLoad = "#venudetailpage";
+                   setTimeout(function() {
+                              mapScroller = new IScroll("#bookingpopupcontent", {
+                                                        fadeScrollbars: false,
+                                                        useTransform: true,
+                                                        useTransition: false,
+                                                        bindToWrapper: true,
+                                                        bounce: false
+                                                        });
+                              }, 300);
+                   var schedule = activeModule.getAssessmentScheduleById(venueAssessmentScheduleId);
+                   var detailStr = "There are no details currently available.";
+                   if (schedule != null) {
+                   detailStr = schedule.getScheduleDetails();
+                   }
+                   var location = schedule.venuename;
+                   $("#mapdiv").empty();
+                   if (isDeviceOnline() === false) {
+                   $("#mapdiv").hide();
+                   $(".directionsbtndiv").hide();
+                   } else {
+                   $("#mapdiv").show();
+                   $("#mapdiv").html(mapDiv);
+                   $(".directionsbtndiv").show();
+                   }
+
+
+                   $("#venuefooterbckbtn").off("vclick");
+                   $("#venuefooterbckbtn").on("vclick", function(event) {
+                                              event.preventDefault();
+                                              if(backButtonOK===true){
+                                              backButtonOK=false;
+                                              prevPage = "#venuedetailpage";
+                                              pageLoad = "#coursepage";
+                                              if (device.platform === "Android") {
+                                              $("#extramenupanel").panel("close");
+                                              history.back();
+                                              } else {
+                                              //$.mobile.navigate("#coursepage");
+                                              $.mobile.back();
+                                              }
+                                              setTimeout(function() {
+                                                         $("#theoryviewheader").html(resources.bookingHead);
+                                                         $("#theoryviewheader").addClass("noicon");
+                                                         }, 600);
+                                              setPagePadderDiv("mapScroller", false);
+                                              setTimeout(function(){backButtonOK=true},600);
+                                              }
+                                              });
+
+                   $("#venueclosebtn").off("vclick");
+                   $("#venueclosebtn").on("vclick", function(event) {
+                                          if(menubtnOk===true){
+                                          $("#venuefooterbckbtn").trigger("vclick");
+                                          setTimeout(function(){menubtnOk=true;},300);
                                           }
-                                          setTimeout(function() {
-                                                     $("#theoryviewheader").html(resources.bookingHead);
-                                                     $("#theoryviewheader").addClass("noicon");
-                                                     }, 600);
-                                          setPagePadderDiv("mapScroller", false);
-                                          setTimeout(function(){backButtonOK=true},600);
-                                          }
+
                                           });
-               
-               $("#venueclosebtn").off("vclick");
-               $("#venueclosebtn").on("vclick", function(event) {
-                                      if(menubtnOk===true){
-                                      $("#venuefooterbckbtn").trigger("vclick");
-                                      setTimeout(function(){menubtnOk=true;},300);
-                                      }
-                                      
-                                      });
-               if (retinaDisplay === true) {
-               $("#venuedetailpage").addClass("retina");
+                   if (retinaDisplay === true) {
+                   $("#venuedetailpage").addClass("retina");
+                   }
+                   setPagePadderDiv("mapScroller", false);
+                   var address = schedule.address;
+                   if (isDeviceOnline() === true && googleAvailable === true && setGoogleJSOK === true) {
+                   getLatLong(schedule, address, function(latLng) {
+                              var style = (tablet === true) ? google.maps.ZoomControlStyle.LARGE : google.maps.ZoomControlStyle.SMALL;
+                              currentLatlng = latLng;
+                              $("#map_canvas").gmap({
+                                                    center: currentLatlng,
+                                                    zoom: 14,
+                                                    disableDefaultUI: false,
+                                                    zoomControl: true,
+                                                    zoomControlOptions: {
+                                                    style: style
+                                                    },
+                                                    scaleControl: true,
+                                                    callback: function() {
+                                                    self = this;
+                                                    self.addMarker({
+                                                                   position: currentLatlng,
+                                                                   bounds: false
+                                                                   }).click(function() {
+                                                                            self.openInfoWindow({
+                                                                                                content: "<div class='mapmarkertitle'>" + schedule.venuename + "</div>"
+                                                                                                }, this);
+                                                                            });
+                                                    setTimeout(function() {
+                                                               self.refresh();
+                                                               }, 300);
+                                                    $("#mapsubmit").off("vclick");
+                                                    $("#mapsubmit").on("vclick", function(event) {
+                                                                       try {
+                                         directions.navigateTo(currentLatlng);
+                                       } catch (e) {}
+                                                                       });
+                                                    }
+                                                    });
+                              });
+                   } else {
+                   $("#mapdiv").hide();
+                   $(".directionsbtndiv").hide();
+                   }
+                   $("#bookcontentdetail").html(detailStr);
+                   setPagePadderDiv("mapScroller", false);
+
                }
-               setPagePadderDiv("mapScroller", false);
-               var address = schedule.address;
-               if (isDeviceOnline() === true && googleAvailable === true && setGoogleJSOK === true) {
-               getLatLong(schedule, address, function(latLng) {
-                          var style = (tablet === true) ? google.maps.ZoomControlStyle.LARGE : google.maps.ZoomControlStyle.SMALL;
-                          currentLatlng = latLng;
-                          $("#map_canvas").gmap({
-                                                center: currentLatlng,
-                                                zoom: 14,
-                                                disableDefaultUI: false,
-                                                zoomControl: true,
-                                                zoomControlOptions: {
-                                                style: style
-                                                },
-                                                scaleControl: true,
-                                                callback: function() {
-                                                self = this;
-                                                self.addMarker({
-                                                               position: currentLatlng,
-                                                               bounds: false
-                                                               }).click(function() {
-                                                                        self.openInfoWindow({
-                                                                                            content: "<div class='mapmarkertitle'>" + schedule.venuename + "</div>"
-                                                                                            }, this);
-                                                                        });
-                                                setTimeout(function() {
-                                                           self.refresh();
-                                                           }, 300);
-                                                $("#mapsubmit").off("vclick");
-                                                $("#mapsubmit").on("vclick", function(event) {
-                                                                   try {
-                                     directions.navigateTo(currentLatlng);
-                                   } catch (e) {}
-                                                                   });
-                                                }
-                                                });
-                          });
-               } else {
-               $("#mapdiv").hide();
-               $(".directionsbtndiv").hide();
-               }
-               $("#bookcontentdetail").html(detailStr);
-               setPagePadderDiv("mapScroller", false);
-               
+
                } catch (e) {
                errorHandler("venuedetailpage.pagebeforeshow", e);
                }
                });
 
+function getAssessmentScheduleByIdNew(venueAssessmentScheduleId)  {
+    try {
+        //var assessmentSchedule = new AssessmentSchedule();
+        if (assessmentschedulesNew != undefined || assessmentschedulesNew.length > 0) {
+            for (var i = 0; i < assessmentschedulesNew.length; i++) {
+                var checkSchedule = assessmentschedulesNew[i];
+                if (checkSchedule.assessmentscheduleid == venueAssessmentScheduleId) {
+                    return checkSchedule;
+                }
+            }
+        }
+        return assessmentSchedule;
+    } catch (e) {
+        errorHandler("Module.getAssessmentScheduleByIdNew", e);
+    }
+}
 function onCurrentLocationError() {}
 
 function openDefaultWebsite(url) {
@@ -5839,6 +5966,16 @@ function viewBookSchedule(id) {
     try {
         var ids = id.split("-");
         venueAssessmentScheduleId = ids[1];
+        goToPage("#venuedetailpage");
+    } catch (e) {
+        errorHandler("viewBookSchedule", e);
+    }
+}
+
+function viewBookVenue(id) {
+    try {
+        var ids = id;
+        venueAssessmentScheduleId = ids;
         goToPage("#venuedetailpage");
     } catch (e) {
         errorHandler("viewBookSchedule", e);
@@ -8880,6 +9017,69 @@ function setRightHandMenuBtns() {
         errorHandler("setRightHandMenuBtns", e);
     }
 }
+var assessmentschedulesNew = new Array();
+function getMyCurrentBookingScheduleTest(returnFunction){
+             var that = this;
+                         getMyCurrentBookingSchedule(false, function(ret){
+                                   if ((ret == undefined || ret == -1 || ret == 0) && isDeviceOnline() === false) {
+                                   returnFunction("offline");
+                                   } else {
+                                   if (ret == 0) {
+                                   returnFunction(false);
+                                   } else {
+
+
+                                   var schedulesObj = ret.getCurrentBookingsResult.Data.bookings.currentBookings;
+                                   //window.localStorage.removeItem("GetAssessmentSchedules");
+                                   //window.localStorage.setItem("GetAssessmentSchedules",JSON.stringify(ret));
+                                   that.PayToBookAction= ret.PayToBookAction;
+                                   that.PayToBookPhoneNumber = ret.PhoneNumber;
+                                   //window.localStorage.removeItem("BookingMessage");
+                                   //window.localStorage.setItem("BookingMessage",ret.BookingMessage);
+
+                                   if (schedulesObj != undefined) {
+                                   var schedule;
+                                   var scheduleObj;
+                                   var bookingItem;
+                                   var bookingObj;
+                                   if (schedulesObj.length == undefined || schedulesObj.length == 0) {
+                                   scheduleObj = schedulesObj;
+                                   schedule = new AssessmentSchedule(that.courseid, that.basemoduleid, scheduleObj.AssessmentBookingId, scheduleObj.AssessmentItemID, scheduleObj.Duration, scheduleObj.VenueRoomID, scheduleObj.ScheduledDate, scheduleObj.ScheduledTime, scheduleObj.EndTime, scheduleObj.VenueName, scheduleObj.VenueTelNo, scheduleObj.Directions, scheduleObj.Street1, scheduleObj.Street2, scheduleObj.City, scheduleObj.Region, scheduleObj.PostCode, scheduleObj.TotalBookings, scheduleObj.RoomName, scheduleObj.ActualCapacity, scheduleObj.AssessmentBookingID, scheduleObj.ScheduledDateString, scheduleObj.HighLightDates, scheduleObj.VenueID, scheduleObj.Latitude, scheduleObj.Longitude, scheduleObj.RestrictBooking,scheduleObj.ZoomJoinURL, scheduleObj.ShowAttendButton, scheduleObj.ZoomMeetingPassword);
+                                   schedule.booking = new BookingItem();
+                                   while (assessmentschedulesNew.length > 0) {
+                                       assessmentschedulesNew.pop();
+                                   }
+                                   assessmentschedulesNew.push(schedule);
+                                   that.testData.push(ret);
+                                   bookingObj = scheduleObj.BookingItem;
+                                   if (bookingObj != undefined && bookingObj.length != 0) {
+                                   bookingItem = new BookingItem(bookingObj.AssessmentItemId, bookingObj.AssessmentBookingId, bookingObj.AssessmentBookingId, bookingObj.OTAGUID, bookingObj.EmailNotificationStatus, bookingObj.BookingDate, bookingObj.BookingDateString, bookingObj.AllowCancel, bookingObj.ResultPending);
+                                   schedule.booking = bookingItem;
+                                   that.hasbooking = true;
+                                   }
+                                   } else {
+                                     //that.testData.push(ret);
+                                   for (var i = 0; i < schedulesObj.length; i++) {
+                                   scheduleObj = schedulesObj[i];
+                                   schedule = new AssessmentSchedule(that.courseid, that.basemoduleid, scheduleObj.AssessmentBookingId, scheduleObj.AssessmentItemID, scheduleObj.Duration, scheduleObj.VenueRoomID, scheduleObj.ScheduledDate, scheduleObj.ScheduledTime, scheduleObj.EndTime, scheduleObj.VenueName, scheduleObj.VenueTelNo, scheduleObj.Directions, scheduleObj.Street1, scheduleObj.Street2, scheduleObj.City, scheduleObj.Region, scheduleObj.PostCode, scheduleObj.TotalBookings, scheduleObj.RoomName, scheduleObj.ActualCapacity, scheduleObj.AssessmentBookingID, scheduleObj.ScheduledDateString, scheduleObj.HighLightDates, scheduleObj.VenueID, scheduleObj.Latitude, scheduleObj.Longitude, scheduleObj.RestrictBooking,scheduleObj.ZoomJoinURL, scheduleObj.ShowAttendButton, scheduleObj.ZoomMeetingPassword);
+                                   schedule.booking = new BookingItem();
+                                   assessmentschedulesNew.push(schedule);
+                                     console.log(assessmentschedulesNew);
+                                   bookingObj = scheduleObj.BookingItem;
+                                   if (bookingObj != undefined && bookingObj.length != 0) {
+                                   bookingItem = new BookingItem(bookingObj.AssessmentItemId, bookingObj.AssessmentBookingId, bookingObj.AssessmentBookingId, bookingObj.OTAGUID, bookingObj.EmailNotificationStatus, bookingObj.BookingDate, bookingObj.BookingDateString, bookingObj.AllowCancel, bookingObj.ResultPending);
+                                   schedule.booking = bookingItem;
+                                   that.hasbooking = true;
+                                   }
+                                   }
+                                   }
+                                   }
+
+                                   }
+                                   }
+                                   returnFunction(true);
+                                   });
+         }
 var myCheck = false;
 function BookingModule(){
     try{
@@ -8894,8 +9094,12 @@ function BookingModule(){
             }
             else{
                 goToPage("#bookingPage");
+                getMyCurrentBookingScheduleTest(function(ret) {
+                    console.log(ret);
+                });
                 getMyCurrentBookingSchedule(false, function(ret){
                     console.log(ret);
+
                     if(ret == 0){
                         msgTitle = resources.connError;
                         msgBtnValue = resources.btnOk;
@@ -8923,18 +9127,18 @@ function BookingModule(){
                                     itemHeadLess = "lesswidth";
                                     CurrentBookingLi += '<li data-theme="h" class="ui-bar-h clientheader ui-li ui-li-divider ui-first-child" style="padding: 0px 0px 0px 16px;background: #8c9090 !important;min-height: 32px;"><div class="bookingdatehead" style="color: white;white-space: normal !important;font-size:0.8em;font-weight:bold;margin-top: 6px;">'+CurrentBooking[i].moduleTitle+'</div></li>'
 
-                                    CurrentBookingLi += '<li style="padding-bottom: 0px;padding-top: 0px;padding-right: 0px;min-height: 36px;" class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div style="width: 100%;min-height: 32px;" class="scheduleitemmain"><div id=head'+CurrentBooking[i].AssessmentBookingId+' class="scheduleitemhead '+itemHeadLess+'">'+CurrentBooking[i].ScheduledDate+', '+CurrentBooking[i].ScheduledTime+'</div><div style="width: 69%;float: left;padding-top: 0px;"><div class=UpattendBtnBModule style="float:right !important;    font-size: 0.8em;width: 40px;;min-height: 19px;padding-top: 12px;"><a style="color: white;" class=attendBtn ui-btn ui-btn-h" data-theme="h"  id="'+CurrentBooking[i].ZoomStartURL+'">'+resources.AttendBtn+'</a></div><img id="'+CurrentBooking[i].AssessmentItemId+'" alt="'+CurrentBooking[i].ZoomMeetingPassword+'" style="display:none;height: 19px;float: right;padding-top: 10px;width:20px;" class="'+showPassowrd+'" src="css/client/images/passwordHide.png" ><div id=hide-'+CurrentBooking[i].AssessmentItemId+' style="float:right;font-size: 0.8em;padding-top: 13px;letter-spacing: 3px;display:none;" class='+showPassowrdStar+'>******</div></div></div></li>';
+                                    CurrentBookingLi += '<li style="padding-bottom: 0px;padding-top: 0px;padding-right: 0px;min-height: 36px;" class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div style="width: 100%;min-height: 32px;" class="scheduleitemmain"><div id=head'+CurrentBooking[i].AssessmentBookingId+' class="scheduleitemhead '+itemHeadLess+'">'+CurrentBooking[i].ScheduledDate+', '+CurrentBooking[i].ScheduledTime+'</div><div style="width: 69%;float: left;padding-top: 0px;"><div class=UpattendBtnBModule style="float:right !important;    font-size: 0.8em;width: 40px;;min-height: 19px;padding-top: 12px;"><a style="color: white;font-size: 0.8em !important;" class=attendBtn ui-btn ui-btn-h" data-theme="h"  id="'+CurrentBooking[i].ZoomStartURL+'">'+resources.AttendBtn+'</a></div><img id="'+CurrentBooking[i].AssessmentItemId+'" alt="'+CurrentBooking[i].ZoomMeetingPassword+'" style="display:none;height: 19px;float: right;padding-top: 10px;width:20px;" class="'+showPassowrd+'" src="css/client/images/passwordHide.png" ><div id=hide-'+CurrentBooking[i].AssessmentItemId+' style="float:right;font-size: 0.8em;padding-top: 13px;letter-spacing: 3px;display:none;" class='+showPassowrdStar+'>******</div></div></div></li>';
                                     showPassowrd = "NotPassowrd";
                                     showPassowrdStar = "NotStar";
                                 }else{
                                     if(CurrentBooking[i].IsAllowed == "False"){
                                         CurrentBookingLi += '<li data-theme="h" class="ui-bar-h clientheader ui-li ui-li-divider ui-first-child" style="padding: 0px 0px 0px 16px;background: #8c9090 !important;min-height: 32px;"><div class="bookingdatehead" style="color: white;white-space: normal !important;font-size:0.8em;font-weight:bold;margin-top: 6px;">'+CurrentBooking[i].moduleTitle+'</div></li>'
 
-                                        CurrentBookingLi += '<li style="padding-bottom: 0px;padding-top: 0px;padding-right: 0px;min-height: 36px;" class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div style="width: 100%;min-height: 32px;" class="scheduleitemmain"><div style="width: 150px !important;" id=head'+CurrentBooking[i].AssessmentBookingId+' class="scheduleitemhead">'+CurrentBooking[i].ScheduledDate+', '+CurrentBooking[i].ScheduledTime+'</div><div class=Upnocancel style="float:right !important;  padding: 5px;  font-size: 0.8em;min-height: 19px;padding-top: 12px;background-color: #ef5351;width: 53px !important;"><a style="color: white;" class=nocancel ui-btn ui-btn-h" data-theme="h" >'+resources.cancelbtntxt+'</a></div></div></li>';
+                                        CurrentBookingLi += '<li style="padding-bottom: 0px;padding-top: 0px;padding-right: 0px;min-height: 36px;" class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div style="width: 100%;min-height: 32px;" class="scheduleitemmain"><div style="width: 150px !important;" id=head'+CurrentBooking[i].AssessmentBookingId+' class="scheduleitemhead">'+CurrentBooking[i].ScheduledDate+', '+CurrentBooking[i].ScheduledTime+'</div><div class=Upnocancel style="float:right !important;  padding: 5px;  font-size: 0.8em;min-height: 19px;padding-top: 12px;background-color: #ef5351;width: 53px !important;"><a style="color: white;font-size: 0.8em !important;" class=nocancel ui-btn ui-btn-h" data-theme="h" >'+resources.cancelbtntxt+'</a></div><div class=Upnocancel style="float:right !important;  padding: 5px;  font-size: 0.8em;min-height: 19px;padding-top: 12px;background-color: #374C68;width: 53px !important;"><a style="color: white;font-size: 0.8em !important;" id='+CurrentBooking[i].AssessmentBookingId+' class=viewVenue ui-btn ui-btn-h" data   -theme="h" >'+resources.detailsbtntxt+'</a></div></div></li>';
                                     }else{
                                         CurrentBookingLi += '<li data-theme="h" class="ui-bar-h clientheader ui-li ui-li-divider ui-first-child" style="padding: 0px 0px 0px 16px;background: #8c9090 !important;min-height: 32px;"><div class="bookingdatehead" style="color: white;white-space: normal !important;font-size:0.8em;font-weight:bold;margin-top: 6px;">'+CurrentBooking[i].moduleTitle+'</div></li>'
 
-                                        CurrentBookingLi += '<li style="padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-left: 0px;min-height: 36px;" class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div style="width: 100%;min-height: 32px;" class="scheduleitemmain"><div style="width: 150px !important;padding-left: 15px;" id=head'+CurrentBooking[i].AssessmentBookingId+' class="scheduleitemhead">'+CurrentBooking[i].ScheduledDate+', '+CurrentBooking[i].ScheduledTime+'</div><div class=Upcancelschedulebtn  style="float:right !important;  padding: 5px;  font-size: 0.8em;min-height: 19px;padding-top: 12px;background-color: #ef5351;width: 53px !important;"><a style="color: white;" class=cancelschedulebtn ui-btn ui-btn-h" data-theme="h" id="'+CurrentBooking[i].AssessmentBookingId+"-"+CurrentBooking[i].AssessmentItemId+"-"+CurrentBooking[i].BaseModuleId+'">'+resources.cancelbtntxt+'</a></div></div></li>';
+                                        CurrentBookingLi += '<li style="padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-left: 0px;min-height: 36px;" class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div style="width: 100%;min-height: 32px;" class="scheduleitemmain"><div style="width: 150px !important;padding-left: 15px;" id=head'+CurrentBooking[i].AssessmentBookingId+' class="scheduleitemhead">'+CurrentBooking[i].ScheduledDate+', '+CurrentBooking[i].ScheduledTime+'</div><div class=Upcancelschedulebtn  style="float:right !important;  padding: 5px;  font-size: 0.8em;min-height: 19px;padding-top: 12px;background-color: #ef5351;width: 53px !important;"><a style="color: white;font-size: 0.8em !important;" class=cancelschedulebtn ui-btn ui-btn-h" data-theme="h" id="'+CurrentBooking[i].AssessmentBookingId+"-"+CurrentBooking[i].AssessmentItemId+"-"+CurrentBooking[i].BaseModuleId+'">'+resources.cancelbtntxt+'</a></div><div class=Upcancelschedulebtn  style="float:right !important;  padding: 5px;  font-size: 0.8em;min-height: 19px;padding-top: 12px;background-color: #374C68;width: 53px !important;"><a style="color: white;font-size: 0.8em !important;" id='+CurrentBooking[i].AssessmentBookingId+' class=viewVenue ui-btn ui-btn-h" data-theme="h" id="'+CurrentBooking[i].AssessmentBookingId+"-"+CurrentBooking[i].AssessmentItemId+"-"+CurrentBooking[i].BaseModuleId+'">'+resources.detailsbtntxt+'</a></div></div></li>';
                                     }
                                 }
 
@@ -8999,6 +9203,12 @@ function BookingModule(){
             $(document).off("vclick","a.nocancel");
             $(document).on("vclick","a.nocancel", function(event) {
                 noCancelBookSchedule(event);
+            });
+
+            $(document).off("vclick","a.viewVenue");
+            $(document).on("vclick","a.viewVenue", function(event) {
+                var id = $(event.currentTarget).attr("id");
+                viewBookVenue(id);
             });
 
             $(document).off("vclick","a.cancelschedulebtn");
@@ -9117,7 +9327,7 @@ function EclassModule(){
                                 if(CurrentEclasses[i].ClassName != null){
                                     CurrentEclassLi += '<li data-theme="h" class="ui-bar-h clientheader ui-li ui-li-divider ui-first-child" style="padding: 0px 0px 0px 16px;background: #8c9090 !important;min-height: 32px;"><div class="bookingdatehead" style="color: white;white-space: normal !important;font-size:0.8em;font-weight:bold;margin-top: 6px;">'+CurrentEclasses[i].ClassName+'</div></li>'
 
-                                    CurrentEclassLi += '<li style="padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;" class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div style="width:100%;min-height: 34px;" class="scheduleitemmain"><div style="padding-left: 15px;padding-top: 10px;width: 63%;" id=head'+CurrentEclasses[i].eClassBookingId+' class="scheduleitemhead">'+CurrentEclasses[i].ScheduledDate+', '+CurrentEclasses[i].ScheduledTime+'</div><div id=hide-'+CurrentEclasses[i].eClassBookingId+' style="float:left;font-size: 0.8em;padding-top: 11px;letter-spacing: 3px;display:none;" class='+showPassowrdStar+'>******</div><img id="'+CurrentEclasses[i].eClassBookingId+'" alt="'+CurrentEclasses[i].ZoomMeetingPassword+'" style="display:none;height: 21px;float: left;padding-top: 8px;" class="'+showPassowrd+'" src="css/client/images/passwordHide.png" ><div class="'+CancelBookBtn+'" style="float:right !important;    font-size: 0.8em;min-height: 21px;padding-top: 10px;"><a class="'+CancelclassForAvai+' ui-btn ui-btn-h" data-theme="h" href="'+CurrentEclasses[i].URL+'" id="'+CurrentEclasses[i].eClassBookingId+'">'+btnText+'</a></div></div></li>';
+                                    CurrentEclassLi += '<li style="padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;" class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div style="width:100%;min-height: 34px;" class="scheduleitemmain"><div style="padding-left: 15px;padding-top: 10px;width: 63%;" id=head'+CurrentEclasses[i].eClassBookingId+' class="scheduleitemhead">'+CurrentEclasses[i].ScheduledDate+', '+CurrentEclasses[i].ScheduledTime+'</div><div id=hide-'+CurrentEclasses[i].eClassBookingId+' style="float:left;font-size: 0.8em;padding-top: 11px;letter-spacing: 3px;display:none;" class='+showPassowrdStar+'>******</div><img id="'+CurrentEclasses[i].eClassBookingId+'" alt="'+CurrentEclasses[i].ZoomMeetingPassword+'" style="display:none;height: 21px;float: left;padding-top: 8px;" class="'+showPassowrd+'" src="css/client/images/passwordHide.png" ><div class="'+CancelBookBtn+'" style="float:right !important;    font-size: 0.8em;min-height: 21px;padding-top: 12px;"><a class="'+CancelclassForAvai+' ui-btn ui-btn-h"   style="font-size: 0.8em !important;" data-theme="h" href="'+CurrentEclasses[i].URL+'" id="'+CurrentEclasses[i].eClassBookingId+'">'+btnText+'</a></div></div></li>';
                                     //CurrentEclassLi += '<li class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div class="scheduleitemmain"><div class="scheduleitemhead">'+CurrentEclasses[i].ScheduledDate+', '+CurrentEclasses[i].ScheduledTime+'</div><div class="'+CancelBookBtn+'" style="float:right !important;    font-size: 0.7em;"><a class="'+CancelclassForAvai+' ui-btn ui-btn-h" data-theme="h" href="'+CurrentEclasses[i].URL+'" id="'+CurrentEclasses[i].eClassBookingId+'">'+btnText+'</a></div></div></li>';
                                     //CurrentEclassLi += '<li class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div class="scheduleitemmain"><div id=head'+CurrentEclasses[i].eClassBookingId+' class="scheduleitemhead">'+CurrentEclasses[i].ScheduledDate+', '+CurrentEclasses[i].ScheduledTime+'</div><img id="'+CurrentEclasses[i].eClassBookingId+'" alt="'+CurrentEclasses[i].ZoomMeetingPassword+'" style="display:none;height: 21px;float: left;" class="'+showPassowrd+'" src="css/client/images/password.png" ><div class="'+CancelBookBtn+'" style="float:right !important;    font-size: 0.7em;"><a class="'+CancelclassForAvai+' ui-btn ui-btn-h" data-theme="h" href="'+CurrentEclasses[i].ZoomStartURL+'" id="'+CurrentEclasses[i].eClassBookingId+'">'+btnText+'</a></div></div></li>';
                                     btnText = 'CANCEL';
@@ -9174,7 +9384,7 @@ function EclassModule(){
                                             classForAvai = "eclassNotbookbtn";
                                             BookBtn = "Notbookbtn";
                                         }
-                                        EclassLi += '<li style="padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;" class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div style="width:100%;min-height: 34px;" class="scheduleitemmain"><div class="scheduleitemhead" style="padding-top: 10px;padding-left: 15px;">'+availableEclasses[i].ScheduledDateCollection[k].ScheduledDate+', '+availableEclasses[i].ScheduledDateCollection[k].ScheduledTime+'</div><div style="font-size:0.8em !important;float: right;min-height: 21px;padding-top: 10px;" class="'+BookBtn+'" style="float:right !important;"><a class="'+classForAvai+' ui-btn ui-btn-h" data-theme="h" href="javascript:void(0);" id="'+availableEclasses[i].ScheduledDateCollection[k].eClassScheduleID+'">BOOK</a></div></div></li>'
+                                        EclassLi += '<li style="padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;" class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div style="width:100%;min-height: 34px;" class="scheduleitemmain"><div class="scheduleitemhead" style="padding-top: 10px;padding-left: 15px;">'+availableEclasses[i].ScheduledDateCollection[k].ScheduledDate+', '+availableEclasses[i].ScheduledDateCollection[k].ScheduledTime+'</div><div style="font-size:0.8em !important;float: right;min-height: 21px;padding-top: 10px;" class="'+BookBtn+'" style="float:right !important;"><a style="font-size: 0.8em !important;padding-top: 3px;" class="'+classForAvai+' ui-btn ui-btn-h" data-theme="h" href="javascript:void(0);" id="'+availableEclasses[i].ScheduledDateCollection[k].eClassScheduleID+'">BOOK</a></div></div></li>'
                                     }
                                     //EclassLi += '<li class="scheduleitem  ui-li-static ui-body-h" data-theme="h"><div class="scheduleitemmain"><div class="scheduleitemhead">'+availableEclasses[i].ScheduledDate+', '+availableEclasses[i].ScheduledTime+'</div><div class="'+BookBtn+'" style="float:right !important;    font-size: 0.7em;"><a class="'+classForAvai+' ui-btn ui-btn-h" data-theme="h" href="javascript:void(0);" id="'+availableEclasses[i].eClassScheduleID+'">BOOK</a></div></div></li>'
                                 }
@@ -10345,7 +10555,7 @@ function setModulesValues(){
                                                                                }
                                                                                });
                                                           } else {
-                                                          refreshMenu("refresh");
+                                                          //refreshMenu("refresh");
                                                           }
                                                           });
                           }
@@ -11047,7 +11257,7 @@ function setModulesValues(){
                           if (activeModule.status !== "In Progress" && activeModule.status !== "Completed") {
                           activeModule.updateGuidelinesStatus(function(ret) {
                                                               resetStatusDisplay("module");
-                                                              refreshMenu("refresh");
+                                                              //refreshMenu("refresh");
                                                               });
                           }
                           activeModule.getGuidelinesContent(function(ret) {

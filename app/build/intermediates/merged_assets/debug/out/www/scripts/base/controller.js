@@ -632,6 +632,23 @@ coGetAssessmentSchedules: function(courseId, basemoduleId, returnFunction) {
         errorHandler("coGetAssessmentSchedules", e);
     }
 },
+cogetMyCurrentBookingSchedule: function( returnFunction) {
+    try {
+        this.coCheckNetworkAvaliable(false, function(retval) {
+                                     if (networkAvailable === true) {
+                                     getMyCurrentBookingSchedule(false, function(ret) {
+                                                            returnFunction(ret);
+                                                            });
+                                     } else {
+                                     getMyCurrentBookingSchedule(true, function(ret) {
+                                                            returnFunction(ret);
+                                                            });
+                                     }
+                                     });
+    } catch (e) {
+        errorHandler("cogetMyCurrentBookingSchedule", e);
+    }
+},
 coGetAssessmentResult: function(courseId, basemoduleId, returnFunction) {
     try {
         this.coCheckNetworkAvaliable(false, function(retval) {
