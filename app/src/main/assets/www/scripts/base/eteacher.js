@@ -9517,7 +9517,7 @@ function EclassModule(){
             var EClassurl = $(this).attr('href');
             var TextCanAtt = $(this).text();
             var eClassBookingId = $(this).attr("id");
-            if(TextCanAtt == 'Cancel'){
+            if(TextCanAtt == 'CANCEL'){
                 coController.coCheckNetworkAvaliable(false, function(ret) {
                     if (ret === false || deviceIsOnline === false) {
                         msgStr = resources.eclassesFail;

@@ -1,4 +1,5 @@
 var scoContentOK = true;
+var assessmentschedulesNew = new Array();
 var Courses = function() {
     try {
         this.init();
@@ -625,8 +626,29 @@ getModuleGroupListView: function(status) {
                     }else if(title.length < 68){
 						// older 041018 else if(title.length < 38 && tablet===false && iphone5===true)
                         singleClass=" groupsinglelinenew";
+                    }else if(title.length < 92){
+                     singleClass=" groupsinglelineNew";
                     }else if(title.length < 92 && tablet===true){
                         singleClass=" modsingleline";
+                    }
+                    var singleClassTab = "";
+                    if(window.screen.width > 600 && window.screen.width < 641){
+                        if(title.length > 68){
+                            singleClassTab=" tabmodulegroupdiv";
+                        }
+                    }
+
+                    if(window.screen.width > 640){
+                        if(title.length < 98){
+                            // older 041018 else if(title.length < 38 && tablet===false && iphone5===true)
+                            singleClass=" groupsinglelinenew";
+                        }
+                    }
+
+                    if(window.screen.width > 640){
+                      if(title.length > 98 && tablet===true){
+                          title = title.substring(0, 94) + "...";
+                      }
                     }
                     var modStatusDisplay="";
                     if (status===courseStatus.Suspended || status===courseStatus.Payment || status===courseStatus.PaymentPending){
@@ -634,7 +656,7 @@ getModuleGroupListView: function(status) {
                     }
                     modlistStr += "<li style='padding: 0px;' id='" + liId + "' class='modulegroupli" + modStatusDisplay + summaryModuleGroup + "'>";
                     modlistStr += "<div class='limodtitleactive'><div class='statuslock " + classStatus + "'></div>";
-                    modlistStr += "<div class='modulegroupdiv'><a id='" + id + "' class='modulegroups ui-alt-icon'>";
+                    modlistStr += "<div class='modulegroupdiv "+singleClassTab+"'><a id='" + id + "' class='modulegroups ui-alt-icon'>";
                     modlistStr += "<div class='limodtitlediv" + singleClass + "'>" + title  + "</div>";
                     modlistStr += "</a>";
                     modlistStr += "</div>";
@@ -969,13 +991,35 @@ getModulesListView: function(status, returnFunction) {
                        var singleClass = "";
                        if(title.length < 58 && tablet===false && iphone5===false){
                        title = title.substring(0, 32) + "...";
-                       singleClass=" groupsingleline";
+                        singleClass=" groupsingleline";
                        }else if(title.length < 68){
 						  // older121018 if(title.length < 38 && tablet===false && iphone5===true){
-                       singleClass=" groupsinglelineNew";
+                        singleClass=" groupsinglelineNew";
+                       }else if(title.length < 92){
+                        singleClass=" groupsinglelineNew";
                        }else if(title.length < 92 && tablet===true){
                        singleClass=" modsingleline";
                        }
+
+                       var singleClassTab = "";
+                       if(window.screen.width > 600 && window.screen.width < 641){
+                           if(title.length > 68){
+                               singleClassTab=" tabmodulegroupdiv";
+                           }
+                       }
+
+                        if(window.screen.width > 640){
+                            if(title.length < 98){
+                                // older 041018 else if(title.length < 38 && tablet===false && iphone5===true)
+                                singleClass=" groupsinglelinenew";
+                            }
+                        }
+
+                       if(window.screen.width > 640){
+                          if(title.length > 98 && tablet===true){
+                              title = title.substring(0, 94) + "...";
+                          }
+                      }
                        
                        //console.log(module.isRequiresBooking);
                        if (module.accessible === false) {
@@ -983,7 +1027,7 @@ getModulesListView: function(status, returnFunction) {
                          modlistStr += "<li id='" + id + "' class='moduleli " + module.inaccessiblefunction;
                          modlistStr += "'>";
                          modlistStr += "<div class='limodtitleactive'><div class='statuslock " + classStatus + "'></div>";
-                         modlistStr += "<div class='modulegroupdiv'><a id='btn-" + id + "' class='modules ui-alt-icon'>";
+                         modlistStr += "<div class='modulegroupdiv "+singleClassTab+"'><a id='btn-" + id + "' class='modules ui-alt-icon'>";
                          modlistStr += "<div class='limodtitlediv" + singleClass + "'>" + title + "</div>";
                          modlistStr += "</a>";
                          modlistStr += "</div>";
@@ -994,7 +1038,7 @@ getModulesListView: function(status, returnFunction) {
                             if(module.modulegrouping == 3 && !module.isRequiresBooking){
                                 modlistStr += "<li id='" + id + "' class='moduleli RequiresBooking'>";
                                 modlistStr += "<div class='limodtitleactive'><div class='statuslock " + classStatus + "'></div>";
-                                modlistStr += "<div class='modulegroupdiv'><a id='btn-" + id + "' class='modules ui-alt-icon'>";
+                                modlistStr += "<div class='modulegroupdiv "+singleClassTab+"'><a id='btn-" + id + "' class='modules ui-alt-icon'>";
                                 modlistStr += "<div class='limodtitlediv" + singleClass + "'>" + title + "</div>";
                                 modlistStr += "</a>";
                                 modlistStr += "</div>";
@@ -1004,7 +1048,7 @@ getModulesListView: function(status, returnFunction) {
                             else{
                                 modlistStr += "<li id='" + id + "' class='moduleli'>";
                                 modlistStr += "<div class='limodtitleactive'><div class='statuslock " + classStatus + "'></div>";
-                                modlistStr += "<div class='modulegroupdiv'><a id='btn-" + id + "' class='modules ui-alt-icon'>";
+                                modlistStr += "<div class='modulegroupdiv "+singleClassTab+"'><a id='btn-" + id + "' class='modules ui-alt-icon'>";
                                 modlistStr += "<div class='limodtitlediv" + singleClass + "'>" + title + "</div>";
                                 modlistStr += "</a>";
                                 modlistStr += "</div>";
@@ -1755,7 +1799,7 @@ getAssessmentSchedules: function(returnFunction) {
                                                   schedule = new AssessmentSchedule(that.courseid, that.basemoduleid, scheduleObj.AssessmentScheduleID, scheduleObj.AssessmentItemID, scheduleObj.Duration, scheduleObj.VenueRoomID, scheduleObj.ScheduledDate, scheduleObj.StartTime, scheduleObj.EndTime, scheduleObj.VenueName, scheduleObj.VenueTelNo, scheduleObj.Directions, scheduleObj.Street1, scheduleObj.Street2, scheduleObj.City, scheduleObj.Region, scheduleObj.PostCode, scheduleObj.TotalBookings, scheduleObj.RoomName, scheduleObj.ActualCapacity, scheduleObj.AssessmentBookingID, scheduleObj.ScheduledDateString, scheduleObj.HighLightDates, scheduleObj.VenueID, scheduleObj.Latitude, scheduleObj.Longitude, scheduleObj.RestrictBooking,scheduleObj.ZoomJoinURL, scheduleObj.ShowAttendButton, scheduleObj.ZoomMeetingPassword);
                                                   schedule.booking = new BookingItem();
                                                   that.assessmentschedules.push(schedule);
-                                                  
+
                                                   bookingObj = scheduleObj.BookingItem;
                                                   if (bookingObj != undefined && bookingObj.length != 0) {
                                                   bookingItem = new BookingItem(bookingObj.AssessmentItemId, bookingObj.AssessmentScheduleId, bookingObj.AssessmentBookingId, bookingObj.OTAGUID, bookingObj.EmailNotificationStatus, bookingObj.BookingDate, bookingObj.BookingDateString, bookingObj.AllowCancel, bookingObj.ResultPending);
@@ -2130,7 +2174,7 @@ getBookingListView: function() {
                     $("#bookingdisclaimerdiv").html(resources.bookingDisclaimerDiv);
                 } else {
                     //schedulesStr += "<div class='awaitingresults'>" + resources.bookingAwaitingResult + "</div></li>";
-                    schedulesStr += "<div style='width:21% !important;text-align:center;margin-left: 6% !important;padding-top: 11px;' class='cancelbookbtn greyColorButton'>"+ resources.bookingAwaitingResult +"</div></li>";
+                    schedulesStr += "<div style='width:83px !important;text-align:center;margin-left: 3% !important;padding-top: 11px;' class='cancelbookbtn greyColorButton'>"+ resources.bookingAwaitingResult +"</div></li>";
                     $("#bookingdisclaimerdiv").addClass("nodisplayimp");
                 }
                 break;

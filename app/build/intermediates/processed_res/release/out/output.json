@@ -10,8 +10,8 @@
       "apkData": {
         "type": "MAIN",
         "splits": [],
-        "versionCode": 800300012,
-        "versionName": "11.04",
+        "versionCode": 800700012,
+        "versionName": "11.05",
         "outputFile": "app-release.apk",
         "fullName": "release",
         "baseName": "release",
