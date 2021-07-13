@@ -105,9 +105,9 @@ $(document).on("pagecreate", "#podcastpage", function() {
 $(document).on("pagebeforeshow", "#podcastpage", function(e) {
                try {
                //$(".extramenupanel").panel("close");
-              rhsMenuOpen = false;
-              mediaSetRefresh();
-              checkASDUserPodState(true, function(ret) {});
+              //rhsMenuOpen = false;
+              //mediaSetRefresh();
+              //checkASDUserPodState(true, function(ret) {});
               refreshMenu("refresh");
                //refreshMenu("refresh");
                loadCoursePage = false;
@@ -1712,7 +1712,7 @@ function setPlaylistSeriesBtn() {
                                                                                                                              }, false);
                                                                                                             audpay.addEventListener("timeupdate", function(e) {
                                                                                                                                     if (e.target.duration > 0.5) {	
-                                                                                                                                    if (e.target.currentTime >= (e.target.duration - 0.15)) {
+                                                                                                                                    if (e.target.currentTime >= (e.target.duration - 0.5)) {
 																																		playlistdecryptstatus=1;
                                                                                                                                     audioPaused = false;
                                                                                                                                     

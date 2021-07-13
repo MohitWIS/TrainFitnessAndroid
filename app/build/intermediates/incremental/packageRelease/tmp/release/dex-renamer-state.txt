@@ -1,4 +1,4 @@
-#Tue Jun 29 20:21:21 IST 2021
+#Tue Jul 13 12:07:04 IST 2021
 base.0=E\:\\MSDTrainFitness\\Android\\Mohit MSD\\Train New Build\\TRAIN\\platforms\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
